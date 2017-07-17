@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function App({ message }) {
   return (
-    <div className="container">
+    <div>
       {message}
     </div>
   );

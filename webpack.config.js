@@ -48,6 +48,10 @@ module.exports = {
         test: /\.scss$/,
         loader: 'style-loader!css-loader!sass-loader'
       }
+      // {
+      //   test: /\.(eot|svg|ttf|woff|woff2)$/,
+      //   loader: 'file?name=src/fonts/[name].[ext]'
+      // }
     ]
   },
   plugins:
