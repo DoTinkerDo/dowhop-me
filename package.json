@@ -4,7 +4,7 @@
   "description": "Market place for doing",
   "main": "server.js",
   "repository": "https://github.com/DoTinkerDo/dowhop-me",
-  "author": "JohannBillar <jwbillar@gmail.com>",
+  "author": "Johann Billar <jwbillar@gmail.com>",
   "license": "MIT",
   "scripts": {
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"src/**/*.{js,jsx}\"",
@@ -24,11 +24,16 @@
     "start:prod": "webpack && node server.js"
   },
   "jest": {
-    "snapshotSerializers": ["jest-serializer-enzyme"]
+    "snapshotSerializers": [
+      "jest-serializer-enzyme"
+    ]
   },
-  "keywords": ["reactJS", "boilerplate", "javascript", "firebase"],
-  "author": "Johann Billar <jwbillar@gmail.com>",
-  "license": "MIT",
+  "keywords": [
+    "reactJS",
+    "boilerplate",
+    "javascript",
+    "firebase"
+  ],
   "dependencies": {
     "axios": "^0.16.2",
     "babel-plugin-dynamic-import-webpack": "^1.0.1",
@@ -46,7 +51,7 @@
     "react-addons-css-transition-group": "^15.4.1",
     "react-addons-perf": "^15.4.2",
     "react-addons-transition-group": "^15.4.1",
-    "react-bootstrap": "^0.31.0",
+    "react-bootstrap": "^0.31.1",
     "react-dom": "^15.6.0",
     "react-router-dom": "^4.1.1",
     "webpack": "^2.6.1",
@@ -80,8 +85,8 @@
     "jest": "^20.0.4",
     "jest-serializer-enzyme": "^1.0.0",
     "moxios": "0.4.0",
-    "nodemon": "1.11.0",
     "node-sass": "^3.10.1",
+    "nodemon": "1.11.0",
     "prettier": "^1.4.4",
     "react-hot-loader": "3.0.0-beta.6",
     "react-test-renderer": "^15.5.4",
