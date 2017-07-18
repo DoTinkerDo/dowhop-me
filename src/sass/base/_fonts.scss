@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+
+@font-face {
+  font-family: 'Avenir Light';
+  src: url('/src/fonts/Avenir-Light.eot');
+  src: url('/src/fonts/Avenir-Light.eot?#iefix') format('embedded-opentype'),
+    url('/src/fonts/Avenir-Light.woff2') format('woff2'), url('/src/fonts/Avenir-Light.woff') format('woff'),
+    url('/src/fonts/Avenir-Light.ttf') format('truetype'), url('/src/fonts/Avenir-Light.svg#Avenir-Light') format('svg');
+  font-weight: 100;
+  font-style: normal;
+}
