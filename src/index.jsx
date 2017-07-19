@@ -5,7 +5,7 @@ import App from './js/App';
 require('./sass/main.scss');
 
 const renderApp = () => {
-  render(<App message="Hello, World!" />, document.getElementById('root'));
+  render(<App />, document.getElementById('root'));
 };
 renderApp();
 
