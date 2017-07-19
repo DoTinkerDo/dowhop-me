@@ -10,13 +10,18 @@ $text-font-stack: 'Avenir Light', Avenir Light, 'Helvetica', 'Arial', sans-serif
 /// @type List
 $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
 
+$pre-font-stack: "Courier 10 Pitch", Courier, monospace;
+
+$font-line-height-body: 1.5;
+$font-line-height-pre: 1.6;
+
 /// Copy text color
 /// @type Color
-$text-color: rgb(34, 34, 34) !default;
+$text-color: rgb(36, 41, 46) !default;
 
 /// Main brand color
 /// @type Color
-$brand-color: rgb(229, 0, 80) !default;
+$brand-color: rgb(236, 25, 40) !default;
 
 /// Light grey
 /// @type Color
@@ -29,6 +34,12 @@ $mid-grey: rgb(153, 153, 153) !default;
 /// Dark grey
 /// @type Color
 $dark-grey: rgb(68, 68, 68) !default;
+
+$color-background-ins: #fff9c0;
+$color-border-abbr: #666666;
+$color-background-ins: #fff9c0;
+$color-background-pre: #eee;
+$color-blockquote-quote: #ededed;
 
 /// Container's maximum width
 /// @type Length
@@ -43,4 +54,4 @@ $breakpoints: ('small': 320px, 'medium': 768px, 'large': 1024px) !default;
 /// @type String
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
-$base-url: '/assets/' !default;
+$base-url: '/public/' !default;
