@@ -9,6 +9,8 @@ Local development
 $ yarn
 $ $ yarn start or $ NODE_ENV=production yarn start
 
+$ yarn flow
+
 Testing
 $ yarn test
 
