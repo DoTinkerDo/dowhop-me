@@ -4,9 +4,9 @@ const webpack = require('webpack');
 module.exports = {
   context: __dirname,
   entry: [
-    // 'react-hot-loader/patch',
-    // 'webpack-dev-server/client?http://localhost:8080',
-    // 'webpack/hot/only-dev-server',
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
     './src/index.jsx'
   ],
   devtool: 'cheap-eval-source-map',
@@ -47,6 +47,10 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style-loader!css-loader!sass-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
       }
       // {
       //   test: /\.(eot|svg|ttf|woff|woff2)$/,
