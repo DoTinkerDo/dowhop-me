@@ -30,4 +30,5 @@ yarn-debug.log*
 yarn-error.log*
 
 functions/firebase-debug.log
-
+src/js/firebase-debug.log
+firebase-debug.log
