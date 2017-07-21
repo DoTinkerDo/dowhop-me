@@ -1,37 +1,38 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import Wrapper from './Wrapper';
-import FirebaseUIAuth from './FirebaseUIAuth';
-import firebase, { ui } from '../firebase';
+import SignIn from './SignIn';
+import firebase from '../firebase';
 
 class App extends Component {
   state = {
-    user: null
+    currentUser: null
   };
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({ user });
+      this.setState({ currentUser: user });
     });
   }
 
-  uiConfig = {
-    callbacks: {
-      signInSuccess() {
-        return true;
-      }
-    },
-    signInFlow: 'popup',
-    signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ]
-  };
-
   render() {
+    const currentUser = this.state.currentUser;
     return (
       <Wrapper>
-        <FirebaseUIAuth id="firebaseui-auth" ui={ui} uiConfig={this.uiConfig} />
+        <h1 className="text-center">Welcome to DoWhop</h1>
+        <h3 className="text-center">Do What You Love!</h3>
+        <div>
+          {!currentUser && <SignIn />}
+        </div>
+        {currentUser &&
+          <div>
+            <p className="text-center">
+              Thanks for signing in {currentUser.displayName}
+            </p>
+            <Button className="pull-right" onClick={() => firebase.auth().signOut()}>
+              Sign Out
+            </Button>
+          </div>}
       </Wrapper>
     );
   }
