@@ -20,6 +20,8 @@ class SignIn extends Component {
   render() {
     return (
       <div>
+        <h3 className="text-center">Log In</h3>
+        <h5 className="text-center">Confirm your information to view your DoWhops</h5>
         <FirebaseUIAuth ui={ui} uiConfig={this.uiConfig} />
       </div>
     );

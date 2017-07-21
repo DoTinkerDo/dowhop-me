@@ -21,8 +21,6 @@ class App extends Component {
     const currentUser = this.state.currentUser;
     return (
       <Wrapper>
-        <h1 className="text-center">Welcome to DoWhop</h1>
-        <h3 className="text-center">Do What You Love!</h3>
         <div>
           {!currentUser && <SignIn />}
         </div>
