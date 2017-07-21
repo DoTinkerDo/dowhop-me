@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import FirebaseUIAuth from './FirebaseUIAuth';
 import firebase, { ui } from '../firebase';
@@ -5,9 +7,7 @@ import firebase, { ui } from '../firebase';
 class SignIn extends Component {
   uiConfig = {
     callbacks: {
-      signInSuccess() {
-        return false;
-      }
+      signInSuccess: () => false
     },
     signInFlow: 'popup',
     signInOptions: [
@@ -16,10 +16,11 @@ class SignIn extends Component {
       firebase.auth.EmailAuthProvider.PROVIDER_ID
     ]
   };
+
   render() {
     return (
       <div>
-        <FirebaseUIAuth id="firebaseui-auth" ui={ui} uiConfig={this.uiConfig} />
+        <FirebaseUIAuth ui={ui} uiConfig={this.uiConfig} />
       </div>
     );
   }

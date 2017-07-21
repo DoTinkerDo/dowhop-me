@@ -7,7 +7,6 @@ class FirebaseUIAuth extends Component {
   componentDidMount() {
     const ui = this.props.ui;
     const uiConfig = this.props.uiConfig;
-    // const { ui, ...uiConfig } = this.props;
     this.ui = ui;
     this.ui.start(this.container, uiConfig);
   }
@@ -20,6 +19,9 @@ class FirebaseUIAuth extends Component {
     ui: Object,
     uiConfig: Object
   };
+
+  ui: Object;
+  container: string;
 
   render() {
     return (
