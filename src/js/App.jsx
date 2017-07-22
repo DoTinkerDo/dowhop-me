@@ -9,6 +9,7 @@ import { database, auth } from '../firebase';
 
 class App extends Component {
   state = {
+    loading: true,
     currentUser: null
   };
 
@@ -43,9 +44,9 @@ class App extends Component {
         </div>
         {currentUser &&
           <div>
-            <p className="text-center">
+            <blockquote className="text-center">
               Thanks for signing in {currentUser.displayName}
-            </p>
+            </blockquote>
             <Button className="pull-right" onClick={() => auth.signOut()}>
               Sign Out
             </Button>

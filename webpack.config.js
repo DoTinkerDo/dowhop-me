@@ -45,6 +45,12 @@ module.exports = {
         loader: 'url-loader?limit=20000&name=images/[name].[ext]'
       },
       {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader'
+        // loader: 'url-loader?limit=100000'
+        // loader: 'file?name=node_modules/bootstrap-sass/assets/fonts/[name].[ext]'
+      },
+      {
         test: /\.scss$/,
         loader: 'style-loader!css-loader!sass-loader'
       },
@@ -52,10 +58,6 @@ module.exports = {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       }
-      // {
-      //   test: /\.(eot|svg|ttf|woff|woff2)$/,
-      //   loader: 'file?name=src/fonts/[name].[ext]'
-      // }
     ]
   },
   plugins:
