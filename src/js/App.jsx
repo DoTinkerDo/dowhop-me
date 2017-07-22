@@ -19,6 +19,7 @@ class App extends Component {
 
   render() {
     const currentUser = this.state.currentUser;
+    console.log(currentUser);
     return (
       <Wrapper>
         <div>
