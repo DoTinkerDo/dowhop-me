@@ -20,6 +20,7 @@ h4,
 h5,
 h6 {
   clear: both;
+  color: $dark-grey;
   font-family: $text-font-stack;
   line-height: 1.3em; // em references its outer most container -> 1.125
   margin-top: 2.5rem; // rem is root relative em and always relate to 16px

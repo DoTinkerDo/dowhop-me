@@ -24,5 +24,6 @@ export default firebase;
 
 export const database = firebase.database();
 export const ui = new firebaseui.auth.AuthUI(firebase.auth());
+export const auth = firebase.auth();
 export const storage = firebase.storage();
 export const messaging = firebase.messaging();

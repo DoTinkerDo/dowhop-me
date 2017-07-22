@@ -22,8 +22,9 @@
     "browser": true,
     "node": true,
     "jest": true
-  }
-  // "rules": {
+  },
+  "rules": {
+    "import/no-named-as-default-member": 0
     // "no-cond-assign": [2, "except-parens"],
     // "radix": 0,
     // "space-infix-ops": 0,
@@ -33,5 +34,5 @@
     // "no-param-reassign": 0,
     // "no-console": 0,
     // "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
-  // }
+  }
 }
