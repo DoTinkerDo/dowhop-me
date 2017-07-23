@@ -9,7 +9,6 @@ import { database, auth } from '../firebase';
 
 class App extends Component {
   state = {
-    loading: true,
     currentUser: null
   };
 
@@ -36,7 +35,6 @@ class App extends Component {
 
   render() {
     const currentUser = this.state.currentUser;
-    // console.log('CURRENTUSER -> ', currentUser);
     return (
       <Wrapper>
         <div>

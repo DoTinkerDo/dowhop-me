@@ -38,7 +38,8 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
@@ -47,8 +48,6 @@ module.exports = {
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader'
-        // loader: 'url-loader?limit=100000'
-        // loader: 'file?name=node_modules/bootstrap-sass/assets/fonts/[name].[ext]'
       },
       {
         test: /\.scss$/,
