@@ -76,6 +76,10 @@ pre {
   padding: 1.6em;
 }
 
+small {
+  @include font-size(1.2);
+}
+
 code,
 kbd,
 tt,

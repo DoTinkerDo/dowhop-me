@@ -1,10 +1,11 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 import { pick } from 'lodash';
 import Wrapper from './Wrapper';
 import SignIn from './SignIn';
+import CurrentUser from './CurrentUser';
 import { database, auth } from '../firebase';
 
 class App extends Component {
@@ -42,12 +43,7 @@ class App extends Component {
         </div>
         {currentUser &&
           <div>
-            <blockquote className="text-center">
-              Thanks for signing in {currentUser.displayName}
-            </blockquote>
-            <Button className="pull-right" onClick={() => auth.signOut()}>
-              Sign Out
-            </Button>
+            <CurrentUser user={currentUser} />
           </div>}
       </Wrapper>
     );
