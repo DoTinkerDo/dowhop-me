@@ -3,12 +3,13 @@
 import React, { Component } from 'react';
 import Wrapper from './Wrapper';
 import SignIn from './SignIn';
+import LoadingDots from './LoadingDots';
 import CurrentUser from './CurrentUser';
 import { database, auth } from '../firebase';
 
 class App extends Component {
   state = {
-    currentUser: {},
+    currentUser: null,
     isLoading: true,
     user: null
   };
@@ -40,7 +41,7 @@ class App extends Component {
         });
       } else {
         this.setState({
-          currentUser: {},
+          currentUser: null,
           isLoading: true,
           user: null
         });
@@ -49,7 +50,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    // TODO this needs to be set to child
+    // TODO this needs to be set to the correct child ref
     this.appUsersRef.off();
   }
 
@@ -60,7 +61,8 @@ class App extends Component {
     return (
       <Wrapper>
         {!user && <SignIn />}
-        {user && <CurrentUser loading={isLoading} user={currentUser} />}
+        {user && isLoading && <LoadingDots />}
+        {currentUser && <CurrentUser user={currentUser} />}
       </Wrapper>
     );
   }
