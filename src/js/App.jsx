@@ -1,8 +1,6 @@
 // @flow
 
 import React, { Component } from 'react';
-// import { Button } from 'react-bootstrap';
-import { pick } from 'lodash';
 import Wrapper from './Wrapper';
 import SignIn from './SignIn';
 import CurrentUser from './CurrentUser';
@@ -10,41 +8,59 @@ import { database, auth } from '../firebase';
 
 class App extends Component {
   state = {
-    currentUser: null
+    currentUser: {},
+    isLoading: true,
+    user: null
   };
 
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
-        this.setState({ currentUser: user });
-
+        this.setState({ user });
         const appUserRef = this.appUsersRef.child(user.uid);
+
         appUserRef.once('value').then(snapshot => {
           if (snapshot.val()) return;
-          const userData = pick(user, ['displayName, email, photoURL, uid']);
+          const date = new Date();
+          const userData = {
+            createdOn: date,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL || `/src/images/profile-placeholder.png`,
+            uid: user.uid
+          };
           appUserRef.update(userData);
         });
+
+        appUserRef.on('value', snapshot => {
+          this.setState({
+            currentUser: snapshot.val(),
+            isLoading: false
+          });
+        });
       } else {
-        this.setState({ currentUser: null });
+        this.setState({
+          currentUser: {},
+          isLoading: true,
+          user: null
+        });
       }
     });
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    // TODO this needs to be set to child
+    this.appUsersRef.off();
+  }
 
   appUsersRef = database.ref('appUsers');
 
   render() {
-    const currentUser = this.state.currentUser;
+    const { currentUser, isLoading, user } = this.state;
     return (
       <Wrapper>
-        <div>
-          {!currentUser && <SignIn />}
-        </div>
-        {currentUser &&
-          <div>
-            <CurrentUser user={currentUser} />
-          </div>}
+        {!user && <SignIn />}
+        {user && <CurrentUser loading={isLoading} user={currentUser} />}
       </Wrapper>
     );
   }
