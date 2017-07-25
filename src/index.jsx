@@ -3,7 +3,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './js/App';
-
 import './sass/main.scss';
 
 // add only for testing
