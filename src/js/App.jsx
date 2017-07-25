@@ -5,13 +5,15 @@ import Wrapper from './Wrapper';
 import SignIn from './SignIn';
 import LoadingDots from './LoadingDots';
 import CurrentUser from './CurrentUser';
+import DoWhop from './DoWhop';
 import { database, auth } from '../firebase';
 
 class App extends Component {
   state = {
     currentUser: null,
     isLoading: true,
-    user: null
+    user: null,
+    value: ''
   };
 
   componentDidMount() {
@@ -54,15 +56,32 @@ class App extends Component {
     this.appUsersRef.off();
   }
 
+  handleChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
+    this.setState({ value: event.target.value });
+  };
+
+  handleSubmit = (uid: string) => {
+    const appUserRef = this.appUsersRef.child(uid);
+    appUserRef.update({ nickname: this.state.value });
+    this.setState({ value: '' });
+  };
+
   appUsersRef = database.ref('appUsers');
 
   render() {
-    const { currentUser, isLoading, user } = this.state;
+    const { currentUser, isLoading, user, value } = this.state;
     return (
       <Wrapper>
+        <DoWhop />
         {!user && <SignIn />}
         {user && isLoading && <LoadingDots />}
-        {currentUser && <CurrentUser user={currentUser} />}
+        {currentUser &&
+          <CurrentUser
+            user={currentUser}
+            value={value}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />}
       </Wrapper>
     );
   }
