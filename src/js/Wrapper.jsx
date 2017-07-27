@@ -3,8 +3,16 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-const Wrapper = ({ children }: Object) =>
-  <Grid>
+import injectSheet from 'react-jss';
+
+const styles = {
+  background: {
+    backgroundColor: '#d2d4d8'
+  }
+};
+
+const Wrapper = ({ classes, children }: Object) =>
+  <Grid className={classes.background}>
     <Row>
       <Col md={12}>
         <div className="site-content">
@@ -16,4 +24,4 @@ const Wrapper = ({ children }: Object) =>
     </Row>
   </Grid>;
 
-export default Wrapper;
+export default injectSheet(styles)(Wrapper);
