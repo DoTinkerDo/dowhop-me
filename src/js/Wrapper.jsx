@@ -7,7 +7,7 @@ import injectSheet from 'react-jss';
 
 const styles = {
   background: {
-    backgroundColor: '#749791'
+    backgroundColor: '#d2d4d8'
   }
 };
 

@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Wrapper from './Wrapper';
+// import Wrapper from './Wrapper';
+import MainMenu from './MainMenu';
 import Landing from './Landing';
+import HowItWorks from './HowItWorks';
 import FourOhFour from './FourOhFour';
 // import SignIn from './SignIn';
 // import LoadingDots from './LoadingDots';
@@ -13,12 +15,14 @@ import FourOhFour from './FourOhFour';
 
 const App = () =>
   <Router>
-    <Wrapper>
+    <div>
+      <MainMenu />
       <Switch>
         <Route exact path="/" component={Landing} />
+        <Route path="/howitworks" component={HowItWorks} />
         <Route component={FourOhFour} />
       </Switch>
-    </Wrapper>
+    </div>
   </Router>;
 
 export default App;

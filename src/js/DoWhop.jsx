@@ -1,5 +1,10 @@
+// @flow
+
 import React from 'react';
 
-const DoWhop = () => <div>I am a DoWhop</div>;
+const DoWhop = () =>
+  <div>
+    <h1>I am a DoWhop Detail View</h1>
+  </div>;
 
 export default DoWhop;
