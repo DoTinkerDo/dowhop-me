@@ -1,27 +1,15 @@
 // @flow
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Wrapper from './Wrapper';
-import Landing from './Landing';
-import FourOhFour from './FourOhFour';
 // import SignIn from './SignIn';
 // import LoadingDots from './LoadingDots';
 // import CurrentUser from './CurrentUser';
 // import DoWhop from './DoWhop';
 // import { database, auth } from '../firebase';
 
-const App = () =>
-  <Router>
-    <Wrapper>
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route component={FourOhFour} />
-      </Switch>
-    </Wrapper>
-  </Router>;
+const Landing = () => <div>Landing Page</div>;
 
-export default App;
+export default Landing;
 
 // class App extends Component {
 //   state = {
