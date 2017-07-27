@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import injectSheet from 'react-jss';
 import { Link } from 'react-router-dom';
 
 const MainMenu = () =>
@@ -22,4 +23,5 @@ const MainMenu = () =>
     </ul>
   </nav>;
 
-export default MainMenu;
+// export default MainMenu;
+export default injectSheet(styles)(MainMenu);
