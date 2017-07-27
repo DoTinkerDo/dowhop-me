@@ -14,7 +14,7 @@ const MainMenu = () =>
         <Link to="/">DoWhops</Link>
       </li>
       <li>
-        <Link to="/">Me</Link>
+        <Link to="/me">Me</Link>
       </li>
       <li>
         <Link to="/">My Profile</Link>

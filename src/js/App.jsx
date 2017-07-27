@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainMenu from './MainMenu';
 import Landing from './Landing';
 import HowItWorks from './HowItWorks';
+import Me from './Me';
 import FourOhFour from './FourOhFour';
 // import SignIn from './SignIn';
 // import LoadingDots from './LoadingDots';
@@ -20,6 +21,7 @@ const App = () =>
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/howitworks" component={HowItWorks} />
+        <Route path="/me" component={Me} />
         <Route component={FourOhFour} />
       </Switch>
     </div>
