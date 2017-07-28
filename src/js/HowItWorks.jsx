@@ -4,7 +4,7 @@ import React from 'react';
 
 const HowItWorks = () =>
   <div>
-    <p>How does DoWhop work?</p>
+    <h1>How does DoWhop work?</h1>
   </div>;
 
 export default HowItWorks;
