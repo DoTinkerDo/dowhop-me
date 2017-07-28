@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 
 const MainNav = () =>
   <nav>
-    <h1 className="text-center">Main App Navigation</h1>
+    <Link to="/">
+      <h1 className="text-center">Main App Navigation</h1>
+    </Link>
     <ul>
       <li>
         <Link to="/howitworks">How It Works</Link>
