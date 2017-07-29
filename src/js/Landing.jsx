@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
+import moment from 'moment';
 import Wrapper from './Wrapper';
 import SignIn from './SignIn';
 import LoadingDots from './LoadingDots';
@@ -23,7 +24,7 @@ class Landing extends Component {
 
         appUserRef.once('value').then(snapshot => {
           if (snapshot.val()) return;
-          const date = new Date();
+          const date = moment().toDate();
           const userData = {
             createdOn: date,
             displayName: user.displayName,
