@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import moment from 'moment';
-import Wrapper from './Wrapper';
 import SignIn from './SignIn';
 import LoadingDots from './LoadingDots';
 import CurrentUser from './CurrentUser';
@@ -71,7 +70,7 @@ class Landing extends Component {
   render() {
     const { currentUser, isLoading, user, value } = this.state;
     return (
-      <Wrapper>
+      <div>
         {!user && <SignIn />}
         {user && isLoading && <LoadingDots />}
         {currentUser &&
@@ -81,7 +80,7 @@ class Landing extends Component {
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />}
-      </Wrapper>
+      </div>
     );
   }
 }
