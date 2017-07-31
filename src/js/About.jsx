@@ -8,11 +8,11 @@ const Page = ({ match }: Object) =>
     <h3>
       {match.params.aboutId}
     </h3>
-    <code>
-      <pre>
+    <pre>
+      <code>
         {JSON.stringify(match, null, 4)}
-      </pre>
-    </code>
+      </code>
+    </pre>
   </div>;
 
 const About = ({ match }: Object) =>

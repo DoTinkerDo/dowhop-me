@@ -8,7 +8,7 @@ const MainNav = () =>
     <Link to="/">
       <h2 className="text-center">DoWhop (home)</h2>
     </Link>
-    <h3 className="text-center">Main Navigation</h3>
+    <h3 className="text-center">Main Nav</h3>
     <ul>
       <li>
         <Link to="/about">About</Link>
