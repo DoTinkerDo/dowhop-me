@@ -32,7 +32,7 @@ class Login extends Component {
   };
 
   props: {
-    location: string
+    location: Object
   };
 
   render() {
