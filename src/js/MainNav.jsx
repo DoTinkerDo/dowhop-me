@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 const MainNav = () =>
   <nav>
     <Link to="/">
-      <h1 className="text-center">Main App Navigation</h1>
+      <h2 className="text-center">DoWhop (home)</h2>
     </Link>
+    <h3 className="text-center">Main Navigation</h3>
     <ul>
       <li>
-        <Link to="/howitworks">How It Works</Link>
+        <Link to="/about">About</Link>
       </li>
       <li>
         <Link to="/dowhops">DoWhops</Link>
