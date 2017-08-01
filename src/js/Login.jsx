@@ -63,7 +63,6 @@ class Login extends Component {
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     const { redirectToReferrer } = this.state;
-
     if (redirectToReferrer) {
       return <Redirect to={from} />;
     }
@@ -73,11 +72,6 @@ class Login extends Component {
         <p className="text-center">
           You must be logged in to view the page at {from.pathname}
         </p>
-        <pre>
-          <code>
-            {JSON.stringify(from, null, 4)}
-          </code>
-        </pre>
         <FirebaseUIAuth ui={ui} {...this.uiConfig} />
       </Row>
     );

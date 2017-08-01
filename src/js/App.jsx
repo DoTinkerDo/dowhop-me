@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import AuthButton from './AuthButton';
 import Wrapper from './Wrapper';
 import Landing from './Landing';
@@ -13,20 +13,27 @@ import Me from './Me';
 import Profile from './Profile';
 import FourOhFour from './FourOhFour';
 
-const App = () =>
-  <Router>
-    <Wrapper>
-      <AuthButton />
-      <MainNav />
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route path="/about" component={About} />
-        <Route path="/login" component={Login} />
-        <PrivateRoute path="/me" component={Me} />
-        <PrivateRoute path="/profile" component={Profile} />
-        <Route component={FourOhFour} />
-      </Switch>
-    </Wrapper>
-  </Router>;
+class App extends React.Component {
+  state = {
+    user: 'Johann Billar'
+  };
+
+  render() {
+    return (
+      <Wrapper>
+        <AuthButton />
+        <MainNav />
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route path="/about" component={About} />
+          <Route path="/login" component={Login} />
+          <PrivateRoute path="/me" component={Me} redirectTo="/login" />
+          <PrivateRoute path="/profile" component={Profile} redirectTo="/login" user={this.state.user} />
+          <Route component={FourOhFour} />
+        </Switch>
+      </Wrapper>
+    );
+  }
+}
 
 export default App;

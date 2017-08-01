@@ -4,16 +4,21 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import appAuth from './appAuth';
 
-const PrivateRoute = ({ component: Component, ...rest }: Object) =>
+const renderMergedProps = (component, ...rest) => {
+  const finalProps = Object.assign({}, ...rest);
+  return React.createElement(component, finalProps);
+};
+
+const PrivateRoute = ({ component, redirectTo, ...rest }: Object) =>
   <Route
     {...rest}
-    render={props =>
+    render={routeProps =>
       appAuth.isAuthenticated
-        ? <Component {...props} />
+        ? renderMergedProps(component, routeProps, rest)
         : <Redirect
             to={{
-              pathname: '/login',
-              state: { from: props.location }
+              pathname: redirectTo,
+              state: { from: routeProps.location }
             }}
           />}
   />;

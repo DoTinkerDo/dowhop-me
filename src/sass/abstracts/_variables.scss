@@ -19,6 +19,9 @@ $font-line-height-pre: 1.6;
 /// @type Color
 $text-color: rgb(36, 41, 46) !default;
 
+$color-background-pre: rgb(56, 80, 76) !default;
+$text-color-pre: rgb(250, 245, 245) !default;
+
 /// Main brand color
 /// @type Color
 $brand-color: rgb(236, 25, 40) !default;
@@ -38,7 +41,7 @@ $dark-grey: rgb(68, 68, 68) !default;
 $color-background-ins: #fff9c0;
 $color-border-abbr: #666666;
 $color-background-ins: #fff9c0;
-$color-background-pre: #eee;
+
 $color-blockquote-quote: #ededed;
 
 /// Container's maximum width
