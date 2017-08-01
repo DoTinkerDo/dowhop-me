@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
 import FirebaseUIAuth from './FirebaseUIAuth';
 import firebase, { database, auth, ui } from '../firebase';
-import appAuth from './appAuth';
+import appAuth from './helpers/appAuth';
 
 class Login extends Component {
   state = {
