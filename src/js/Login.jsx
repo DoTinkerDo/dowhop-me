@@ -1,16 +1,38 @@
 // @flow
 
 import React, { Component } from 'react';
+import moment from 'moment';
 import { Redirect } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
 import FirebaseUIAuth from './FirebaseUIAuth';
-import firebase, { ui } from '../firebase';
+import firebase, { database, auth, ui } from '../firebase';
 import appAuth from './appAuth';
 
 class Login extends Component {
   state = {
     redirectToReferrer: false
   };
+
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        const appUserRef = this.appUsersRef.child(user.uid);
+
+        appUserRef.once('value').then(snapshot => {
+          if (snapshot.val()) return;
+          const date = moment().toDate();
+          const userData = {
+            createdOn: date,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL || `/src/images/profile-placeholder.png`,
+            uid: user.uid
+          };
+          appUserRef.update(userData);
+        });
+      }
+    });
+  }
 
   uiConfig = {
     callbacks: {
@@ -35,6 +57,8 @@ class Login extends Component {
   props: {
     location: Object
   };
+
+  appUsersRef = database.ref('appUsers');
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
