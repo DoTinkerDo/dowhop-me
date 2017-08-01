@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { Row } from 'react-bootstrap';
 import FirebaseUIAuth from './FirebaseUIAuth';
 import firebase, { ui } from '../firebase';
 import appAuth from './appAuth';
@@ -44,17 +45,17 @@ class Login extends Component {
     }
 
     return (
-      <div>
+      <Row style={{ marginTop: '50px' }}>
         <p className="text-center">
           You must be logged in to view the page at {from.pathname}
-          <pre>
-            <code>
-              {JSON.stringify(from, null, 4)}
-            </code>
-          </pre>
         </p>
+        <pre>
+          <code>
+            {JSON.stringify(from, null, 4)}
+          </code>
+        </pre>
         <FirebaseUIAuth ui={ui} {...this.uiConfig} />
-      </div>
+      </Row>
     );
   }
 }

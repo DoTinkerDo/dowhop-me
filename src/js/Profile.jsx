@@ -1,50 +1,83 @@
 // @flow
 
-import React from 'react';
-// import { Button, Col, FormControl, Row, Thumbnail } from 'react-bootstrap';
-// import { auth } from '../firebase';
+import React, { Component } from 'react';
+import moment from 'moment';
+// import LoadingDots from './LoadingDots';
+// import CurrentUser from './CurrentUser';
+import { database, auth } from '../firebase';
 
-// const MyProfile = (props: { user: Object, value: string, handleChange: Function, handleSubmit: Function }) => {
-//   const { user, value, handleChange, handleSubmit } = props;
-//   return (
-//     <Row>
-//       <Col xs={12} md={6}>
-//         <Thumbnail src={user.photoURL} alt={`headshot for ${user.displayName}`}>
-//           <h3>
-//             {user.displayName}
-//           </h3>
-//           <p>
-//             {user.nickname || 'Your nickname'}
-//           </p>
-//           <p>
-//             {user.email}
-//           </p>
-//           <p>
-//             <small>
-//               {user.uid}
-//             </small>
-//           </p>
-//           <p>
-//             <small>
-//               {user.createdOn}
-//             </small>
-//           </p>
-//           <FormControl type="text" value={value} placeholder="Enter your nickname" onChange={handleChange} />
-//           <Button onClick={() => handleSubmit(user.uid)}>Save</Button>
-//           <p>
-//             <Button bsStyle="default" onClick={() => auth.signOut()}>
-//               Sign Out
-//             </Button>
-//           </p>
-//         </Thumbnail>
-//       </Col>
-//     </Row>
-//   );
-// };
+class Profile extends Component {
+  state = {
+    currentUser: null,
+    isLoading: true,
+    user: null,
+    value: ''
+  };
 
-const Profile = () =>
-  <div>
-    <h2>This is the Profile Page</h2>
-  </div>;
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user });
+        const appUserRef = this.appUsersRef.child(user.uid);
+
+        appUserRef.once('value').then(snapshot => {
+          if (snapshot.val()) return;
+          const date = moment().toDate();
+          const userData = {
+            createdOn: date,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL || `/src/images/profile-placeholder.png`,
+            uid: user.uid
+          };
+          appUserRef.update(userData);
+        });
+
+        appUserRef.on('value', snapshot => {
+          this.setState({
+            currentUser: snapshot.val(),
+            isLoading: false
+          });
+        });
+      } else {
+        this.setState({
+          currentUser: null,
+          isLoading: true,
+          user: null
+        });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    // TODO this needs to be set to the correct child ref
+    this.appUsersRef.off();
+  }
+
+  handleChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
+    this.setState({ value: event.target.value });
+  };
+
+  handleSubmit = (uid: string) => {
+    const appUserRef = this.appUsersRef.child(uid);
+    appUserRef.update({ nickname: this.state.value });
+    this.setState({ value: '' });
+  };
+
+  appUsersRef = database.ref('appUsers');
+
+  render() {
+    return (
+      <div>
+        <h2>This is the Profile Page</h2>
+        <pre>
+          <code>
+            {JSON.stringify(this.state, null, 4)}
+          </code>
+        </pre>
+      </div>
+    );
+  }
+}
 
 export default Profile;
