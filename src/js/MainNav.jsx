@@ -1,27 +1,30 @@
 // @flow
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { Row } from 'react-bootstrap';
 
 const MainNav = () =>
-  <nav>
-    <Link to="/">
-      <h1 className="text-center">Main App Navigation</h1>
-    </Link>
-    <ul>
-      <li>
-        <Link to="/howitworks">How It Works</Link>
-      </li>
-      <li>
-        <Link to="/dowhops">DoWhops</Link>
-      </li>
-      <li>
-        <Link to="/me">Me</Link>
-      </li>
-      <li>
-        <Link to="/profile">My Profile</Link>
-      </li>
-    </ul>
-  </nav>;
+  <Row>
+    <nav>
+      <Link to="/">
+        <h2 className="text-center">DoWhop</h2>
+      </Link>
+      <ul>
+        <li>
+          <NavLink to="/about">About</NavLink>
+        </li>
+        <li>
+          <NavLink to="/dowhops">DoWhops</NavLink>
+        </li>
+        <li>
+          <NavLink to="/me">Me</NavLink>
+        </li>
+        <li>
+          <NavLink to="/profile">Profile</NavLink>
+        </li>
+      </ul>
+    </nav>
+  </Row>;
 
 export default MainNav;

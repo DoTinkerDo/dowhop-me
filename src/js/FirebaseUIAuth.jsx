@@ -5,8 +5,7 @@ import 'firebaseui/dist/firebaseui.css';
 
 class FirebaseUIAuth extends Component {
   componentDidMount() {
-    const ui = this.props.ui;
-    const uiConfig = this.props.uiConfig;
+    const { ui, ...uiConfig } = this.props;
     this.ui = ui;
     this.ui.start(this.container, uiConfig);
   }
@@ -16,8 +15,7 @@ class FirebaseUIAuth extends Component {
   }
 
   props: {
-    ui: Object,
-    uiConfig: Object
+    ui: Object
   };
 
   ui: Object;

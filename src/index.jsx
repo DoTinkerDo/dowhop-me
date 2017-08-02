@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './js/App';
+
 import './sass/main.scss';
 
 // add only for testing
@@ -10,7 +12,12 @@ import './sass/main.scss';
 // Perf.start();
 
 const renderApp = () => {
-  render(<App />, document.getElementById('root'));
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    document.getElementById('root')
+  );
 };
 renderApp();
 
