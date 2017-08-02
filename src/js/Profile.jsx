@@ -11,7 +11,7 @@ const Profile = (props: Object) =>
     <h2>This is the Profile Page</h2>
     <pre>
       <code>
-        {JSON.stringify(props.user, null, 4)}
+        {JSON.stringify(props, null, 4)}
       </code>
     </pre>
   </div>;
