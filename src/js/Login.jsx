@@ -69,15 +69,15 @@ class Login extends Component {
 
     return (
       <Row style={{ marginTop: '50px' }}>
+        <p className="text-center">
+          You must be logged in to view the page at {from.pathname}
+        </p>
+        <FirebaseUIAuth ui={ui} {...this.uiConfig} />
         <pre>
           <code>
             {JSON.stringify(this.props, null, 4)}
           </code>
         </pre>
-        <p className="text-center">
-          You must be logged in to view the page at {from.pathname}
-        </p>
-        <FirebaseUIAuth ui={ui} {...this.uiConfig} />
       </Row>
     );
   }

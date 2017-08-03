@@ -10,7 +10,8 @@ const AuthButton = withRouter(
     appAuth.isAuthenticated
       ? <Button
           onClick={() => {
-            appAuth.signout(() => history.push('/'));
+            appAuth.signout();
+            history.push('/');
           }}
         >
           Logout

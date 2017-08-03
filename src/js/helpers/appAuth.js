@@ -5,10 +5,9 @@ const appAuth = {
   authenticate() {
     this.isAuthenticated = true;
   },
-  signout(cb) {
+  signout() {
     this.isAuthenticated = false;
     auth.signOut();
-    cb();
   }
 };
 
