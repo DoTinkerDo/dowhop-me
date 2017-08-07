@@ -36,8 +36,8 @@ class Login extends Component {
 
   uiConfig = {
     callbacks: {
-      signInSuccess: () => {
-        this.login();
+      signInSuccess: (user: Object) => {
+        this.login(user);
         return false;
       }
     },
@@ -49,13 +49,15 @@ class Login extends Component {
     ]
   };
 
-  login = () => {
+  login = user => {
     appAuth.authenticate();
+    this.props.updateUser(user);
     this.setState({ redirectToReferrer: true });
   };
 
   props: {
-    location: Object
+    location: Object,
+    updateUser: Function
   };
 
   appUsersRef = database.ref('appUsers');
@@ -66,7 +68,6 @@ class Login extends Component {
     if (redirectToReferrer) {
       return <Redirect to={from} />;
     }
-
     return (
       <Row style={{ marginTop: '50px' }}>
         <p className="text-center">

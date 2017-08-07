@@ -16,10 +16,12 @@ import FourOhFour from './FourOhFour';
 
 class App extends React.Component {
   state = {
-    user: null
+    user: {}
   };
 
-  updateUser = () => console.log('UPDATEUSER');
+  updateUser = (user: Object) => {
+    this.setState({ user });
+  };
 
   render() {
     return (
@@ -29,8 +31,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route path="/about" component={About} />
-          <PropsRoute path="/login" component={Login} user={this.state.user} />
-          <PrivateRoute path="/me" component={Me} redirectTo="/login" />
+          <PropsRoute path="/login" component={Login} updateUser={this.updateUser} />
+          <PrivateRoute path="/me" component={Me} redirectTo="/login" user={this.state.user} />
           <PrivateRoute path="/profile" component={Profile} redirectTo="/login" user={this.state.user} />
           <Route component={FourOhFour} />
         </Switch>
