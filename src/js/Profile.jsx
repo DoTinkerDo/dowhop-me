@@ -12,17 +12,14 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    const appUserRef = this.appUsersRef.child(this.props.user.uid);
-    appUserRef.on('value', snapshot => {
-      this.setState({
-        currentUser: snapshot.val()
-      });
+    this.appUserRef.on('value', snapshot => {
+      const currentUser = snapshot.val();
+      this.setState({ currentUser });
     });
   }
 
   componentWillUnmount() {
-    // TODO this needs to be set to the correct child ref
-    this.appUsersRef.off();
+    this.appUserRef.off();
   }
 
   handleChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
@@ -40,6 +37,7 @@ class Profile extends Component {
   };
 
   appUsersRef = database.ref('appUsers');
+  appUserRef = this.appUsersRef.child(this.props.user.uid);
 
   render() {
     const { currentUser, value } = this.state;

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Button, Col, FormControl, Row, Thumbnail } from 'react-bootstrap';
-import AuthButton from './AuthButton';
 
 const CurrentUser = (props: { user: Object, value: string, handleChange: Function, handleSubmit: Function }) => {
   const { user, value, handleChange, handleSubmit } = props;
@@ -31,9 +30,6 @@ const CurrentUser = (props: { user: Object, value: string, handleChange: Functio
           </p>
           <FormControl type="text" value={value} placeholder="Enter your nickname" onChange={handleChange} />
           <Button onClick={() => handleSubmit(user.uid)}>Save</Button>
-          <p>
-            <AuthButton />
-          </p>
         </Thumbnail>
       </Col>
     </Row>
