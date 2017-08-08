@@ -3,10 +3,17 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
+import injectSheet from 'react-jss';
 
-const MainNav = () =>
+const styles = {
+  margin: {
+    marginBottom: '5%'
+  }
+};
+
+const MainNav = ({ classes }: Object) =>
   <Row>
-    <nav>
+    <nav className={classes.margin}>
       <Link to="/">
         <h2 className="text-center">DoWhop</h2>
       </Link>
@@ -27,4 +34,4 @@ const MainNav = () =>
     </nav>
   </Row>;
 
-export default MainNav;
+export default injectSheet(styles)(MainNav);

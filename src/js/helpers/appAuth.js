@@ -1,14 +1,15 @@
-import { auth } from '../firebase';
+// @flow
+
+import { auth } from '../../firebase';
 
 const appAuth = {
   isAuthenticated: false,
   authenticate() {
     this.isAuthenticated = true;
   },
-  signout(cb) {
+  signout() {
     this.isAuthenticated = false;
     auth.signOut();
-    cb();
   }
 };
 

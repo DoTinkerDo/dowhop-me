@@ -7,6 +7,7 @@ import Wrapper from './Wrapper';
 import Landing from './Landing';
 import MainNav from './MainNav';
 import PrivateRoute from './PrivateRoute';
+import PropsRoute from './PropsRoute';
 import Login from './Login';
 import About from './About';
 import Me from './Me';
@@ -15,7 +16,11 @@ import FourOhFour from './FourOhFour';
 
 class App extends React.Component {
   state = {
-    user: 'Johann Billar'
+    user: {}
+  };
+
+  updateUser = (user: Object) => {
+    this.setState({ user });
   };
 
   render() {
@@ -26,8 +31,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route path="/about" component={About} />
-          <Route path="/login" component={Login} />
-          <PrivateRoute path="/me" component={Me} redirectTo="/login" />
+          <PropsRoute path="/login" component={Login} updateUser={this.updateUser} />
+          <PrivateRoute path="/me" component={Me} redirectTo="/login" user={this.state.user} />
           <PrivateRoute path="/profile" component={Profile} redirectTo="/login" user={this.state.user} />
           <Route component={FourOhFour} />
         </Switch>

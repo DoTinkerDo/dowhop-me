@@ -2,12 +2,8 @@
 
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import appAuth from './appAuth';
-
-const renderMergedProps = (component, ...rest) => {
-  const finalProps = Object.assign({}, ...rest);
-  return React.createElement(component, finalProps);
-};
+import renderMergedProps from './helpers/renderMergedProps';
+import appAuth from './helpers/appAuth';
 
 const PrivateRoute = ({ component, redirectTo, ...rest }: Object) =>
   <Route

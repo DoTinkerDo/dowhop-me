@@ -2,10 +2,22 @@
 
 import React from 'react';
 import { Button, Col, FormControl, Row, Thumbnail } from 'react-bootstrap';
-import { auth } from '../firebase';
+import injectSheet from 'react-jss';
 
-const CurrentUser = (props: { user: Object, value: string, handleChange: Function, handleSubmit: Function }) => {
-  const { user, value, handleChange, handleSubmit } = props;
+const styles = {
+  margin: {
+    marginTop: '1%'
+  }
+};
+
+const CurrentUser = (props: {
+  user: Object,
+  value: string,
+  handleChange: Function,
+  handleSubmit: Function,
+  classes: Object
+}) => {
+  const { user, value, handleChange, handleSubmit, classes } = props;
   return (
     <Row>
       <Col xs={12} md={6}>
@@ -30,16 +42,13 @@ const CurrentUser = (props: { user: Object, value: string, handleChange: Functio
             </small>
           </p>
           <FormControl type="text" value={value} placeholder="Enter your nickname" onChange={handleChange} />
-          <Button onClick={() => handleSubmit(user.uid)}>Save</Button>
-          <p>
-            <Button bsStyle="default" onClick={() => auth.signOut()}>
-              Sign Out
-            </Button>
-          </p>
+          <Button onClick={() => handleSubmit(user.uid)} className={classes.margin}>
+            Save
+          </Button>
         </Thumbnail>
       </Col>
     </Row>
   );
 };
 
-export default CurrentUser;
+export default injectSheet(styles)(CurrentUser);

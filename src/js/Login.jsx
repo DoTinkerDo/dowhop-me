@@ -4,9 +4,16 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { Redirect } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
+import injectSheet from 'react-jss';
 import FirebaseUIAuth from './FirebaseUIAuth';
 import firebase, { database, auth, ui } from '../firebase';
-import appAuth from './appAuth';
+import appAuth from './helpers/appAuth';
+
+const styles = {
+  margin: {
+    marginBottom: '20%'
+  }
+};
 
 class Login extends Component {
   state = {
@@ -36,8 +43,8 @@ class Login extends Component {
 
   uiConfig = {
     callbacks: {
-      signInSuccess: () => {
-        this.login();
+      signInSuccess: (user: Object) => {
+        this.login(user);
         return false;
       }
     },
@@ -49,13 +56,16 @@ class Login extends Component {
     ]
   };
 
-  login = () => {
+  login = (user: Object) => {
     appAuth.authenticate();
+    this.props.updateUser(user);
     this.setState({ redirectToReferrer: true });
   };
 
   props: {
-    location: Object
+    location: Object,
+    updateUser: Function,
+    classes: Object
   };
 
   appUsersRef = database.ref('appUsers');
@@ -63,12 +73,12 @@ class Login extends Component {
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     const { redirectToReferrer } = this.state;
+    const { classes } = this.props;
     if (redirectToReferrer) {
       return <Redirect to={from} />;
     }
-
     return (
-      <Row style={{ marginTop: '50px' }}>
+      <Row className={classes.margin}>
         <p className="text-center">
           You must be logged in to view the page at {from.pathname}
         </p>
@@ -78,4 +88,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default injectSheet(styles)(Login);
