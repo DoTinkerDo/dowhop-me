@@ -2,12 +2,11 @@
 
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-
 import injectSheet from 'react-jss';
 
 const styles = {
   background: {
-    backgroundColor: '#e9e9e9'
+    backgroundColor: '#eeeeee'
   }
 };
 
