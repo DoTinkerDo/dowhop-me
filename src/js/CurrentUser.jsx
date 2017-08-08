@@ -33,7 +33,7 @@ const CurrentUser = (props: { user: Object, value: string, handleChange: Functio
           <Button onClick={() => handleSubmit(user.uid)}>Save</Button>
           <p>
             <Button bsStyle="default" onClick={() => auth.signOut()}>
-              Sign Out
+              Logout
             </Button>
           </p>
         </Thumbnail>

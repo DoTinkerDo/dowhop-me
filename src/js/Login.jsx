@@ -49,7 +49,7 @@ class Login extends Component {
     ]
   };
 
-  login = user => {
+  login = (user: Object) => {
     appAuth.authenticate();
     this.props.updateUser(user);
     this.setState({ redirectToReferrer: true });
@@ -74,11 +74,6 @@ class Login extends Component {
           You must be logged in to view the page at {from.pathname}
         </p>
         <FirebaseUIAuth ui={ui} {...this.uiConfig} />
-        <pre>
-          <code>
-            {JSON.stringify(this.props, null, 4)}
-          </code>
-        </pre>
       </Row>
     );
   }
