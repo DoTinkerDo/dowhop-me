@@ -42,15 +42,16 @@ class Profile extends Component {
   appUsersRef = database.ref('appUsers');
 
   render() {
-    const currentUser = this.state.currentUser;
+    const { currentUser, value } = this.state;
     return (
       <div>
         {!currentUser
           ? <LoadingDots />
           : <CurrentUser
-              user={this.state.currentUser}
+              user={currentUser}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
+              value={value}
             />}
       </div>
     );
