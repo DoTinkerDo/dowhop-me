@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Button, Col, FormControl, Row, Thumbnail } from 'react-bootstrap';
-// import { auth } from '../firebase';
 import AuthButton from './AuthButton';
 
 const CurrentUser = (props: { user: Object, value: string, handleChange: Function, handleSubmit: Function }) => {

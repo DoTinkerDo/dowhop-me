@@ -1,3 +1,5 @@
+// @flow
+
 import { auth } from '../../firebase';
 
 const appAuth = {
