@@ -16,12 +16,8 @@ const styles = {
 };
 
 class Login extends Component {
-  state = {
-    redirectToReferrer: false
-  };
-
   componentDidMount() {
-    auth.onAuthStateChanged(user => {
+    this.unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
         const appUserRef = this.appUsersRef.child(user.uid);
 
@@ -39,6 +35,10 @@ class Login extends Component {
         });
       }
     });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   uiConfig = {
@@ -59,7 +59,6 @@ class Login extends Component {
   login = (user: Object) => {
     appAuth.authenticate();
     this.props.updateUser(user);
-    this.setState({ redirectToReferrer: true });
   };
 
   props: {
@@ -69,12 +68,12 @@ class Login extends Component {
   };
 
   appUsersRef = database.ref('appUsers');
+  unsubscribe;
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
-    const { redirectToReferrer } = this.state;
     const { classes } = this.props;
-    if (redirectToReferrer || appAuth.isAuthenticated) {
+    if (appAuth.isAuthenticated) {
       return <Redirect to={from} />;
     }
     return (
