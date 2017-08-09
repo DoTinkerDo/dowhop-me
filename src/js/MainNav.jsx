@@ -16,7 +16,7 @@ const MainNav = ({ classes }: Object) =>
     <nav className={classes.margin}>
       <ul>
         <li>
-          <NavLink to="/about">About</NavLink>
+          <a href="https://www.dowhop.com/howitworks">How it Works</a>
         </li>
         <li>
           <a href="https://www.dowhop.com/explore">DoWhops</a>
