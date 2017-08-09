@@ -8,15 +8,20 @@ import injectSheet from 'react-jss';
 const styles = {
   margin: {
     marginBottom: '5%'
+  },
+  fontStyles: {
+    textTransform: 'uppercase'
   }
 };
 
 const MainNav = ({ classes }: Object) =>
   <Row>
     <nav className={classes.margin}>
-      <ul>
+      <ul className={classes.fontStyles}>
         <li>
-          <a href="https://www.dowhop.com/howitworks">How it Works</a>
+          <a href="https://www.dowhop.com/howitworks">
+            <img src="/src/images/dowhop-icon.png" alt="How it Works" />
+          </a>
         </li>
         <li>
           <a href="https://www.dowhop.com/explore">DoWhops</a>
