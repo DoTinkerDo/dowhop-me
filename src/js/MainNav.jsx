@@ -22,7 +22,7 @@ const MainNav = ({ classes }: Object) =>
           <NavLink to="/about">About</NavLink>
         </li>
         <li>
-          <NavLink to="/dowhops">DoWhops</NavLink>
+          <a href="https://www.dowhop.com/explore">DoWhops</a>
         </li>
         <li>
           <NavLink to="/me">Me</NavLink>
