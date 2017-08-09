@@ -26,6 +26,8 @@ class App extends React.Component {
       if (user) {
         appAuth.authenticate();
         this.setState({ user });
+      } else {
+        this.setState({ user: {} });
       }
     });
   }
