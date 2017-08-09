@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { auth } from '../firebase';
+import appAuth from './helpers/appAuth';
 import AuthButton from './AuthButton';
 import Wrapper from './Wrapper';
 import Landing from './Landing';
@@ -18,6 +20,15 @@ class App extends React.Component {
   state = {
     user: {}
   };
+
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        appAuth.authenticate();
+        this.setState({ user });
+      }
+    });
+  }
 
   updateUser = (user: Object) => {
     this.setState({ user });

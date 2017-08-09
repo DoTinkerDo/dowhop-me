@@ -21,12 +21,12 @@ const CurrentUser = (props: {
   return (
     <Row>
       <Col xs={12} md={6}>
-        <Thumbnail src={user.photoURL} alt={`headshot for ${user.displayName}`}>
+        <Thumbnail src={user.photoURL} alt={`headshot for ${user.story}`}>
           <h3>
             {user.displayName}
           </h3>
           <p>
-            {user.nickname || 'Your nickname'}
+            {user.story || 'Your story'}
           </p>
           <p>
             {user.email}
@@ -41,7 +41,7 @@ const CurrentUser = (props: {
               {user.createdOn}
             </small>
           </p>
-          <FormControl type="text" value={value} placeholder="Enter your nickname" onChange={handleChange} />
+          <FormControl type="text" value={value} placeholder="Enter your story" onChange={handleChange} />
           <Button onClick={() => handleSubmit(user.uid)} className={classes.margin}>
             Save
           </Button>
