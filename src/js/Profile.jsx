@@ -28,7 +28,7 @@ class Profile extends Component {
 
   handleSubmit = (uid: string) => {
     const appUserRef = this.appUsersRef.child(uid);
-    appUserRef.update({ nickname: this.state.value });
+    appUserRef.update({ story: this.state.value });
     this.setState({ value: '' });
   };
 
