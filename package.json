@@ -1,7 +1,7 @@
 {
     "name": "DoWhop",
     "version": "2.0.0",
-    "description": "Market place for doing",
+    "description": "Marketplace for doing",
     "main": "server.js",
     "repository": "https://github.com/DoTinkerDo/dowhop-me",
     "contributors": "Johann Billar <jwbillar@gmail.com>",
@@ -24,16 +24,9 @@
         "start:prod": "webpack && node server.js"
     },
     "jest": {
-        "snapshotSerializers": [
-            "jest-serializer-enzyme"
-        ]
+        "snapshotSerializers": ["jest-serializer-enzyme"]
     },
-    "keywords": [
-        "reactJS",
-        "boilerplate",
-        "javascript",
-        "firebase"
-    ],
+    "keywords": ["reactJS", "boilerplate", "javascript", "firebase"],
     "dependencies": {
         "axios": "^0.16.2",
         "babel-plugin-dynamic-import-webpack": "^1.0.1",
