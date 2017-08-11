@@ -22,6 +22,7 @@ class Login extends Component {
         const appUserRef = this.appUsersRef.child(user.uid);
 
         appUserRef.once('value').then(snapshot => {
+          console.log('SNAPSHOT', snapshot.val());
           if (snapshot.val()) return;
           const date = moment().toDate();
           const userData = {
