@@ -17,12 +17,11 @@ const styles = {
 
 class Login extends Component {
   componentDidMount() {
-    this.unsubscribe = auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         const appUserRef = this.appUsersRef.child(user.uid);
 
         appUserRef.once('value').then(snapshot => {
-          console.log('SNAPSHOT', snapshot.val());
           if (snapshot.val()) return;
           const date = moment().toDate();
           const userData = {
@@ -36,10 +35,6 @@ class Login extends Component {
         });
       }
     });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
   }
 
   uiConfig = {
