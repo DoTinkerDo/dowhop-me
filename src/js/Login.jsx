@@ -20,7 +20,7 @@ class Login extends Component {
     auth.onAuthStateChanged(user => {
       if (user) {
         const appUserRef = this.appUsersRef.child(user.uid);
-
+        console.log('HELLO, DOWHOPPER!');
         appUserRef.once('value').then(snapshot => {
           if (snapshot.val()) return;
           const date = moment().toDate();
