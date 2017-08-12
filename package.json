@@ -24,9 +24,16 @@
         "start:prod": "webpack && node server.js"
     },
     "jest": {
-        "snapshotSerializers": ["jest-serializer-enzyme"]
+        "snapshotSerializers": [
+            "jest-serializer-enzyme"
+        ]
     },
-    "keywords": ["reactJS", "boilerplate", "javascript", "firebase"],
+    "keywords": [
+        "reactJS",
+        "boilerplate",
+        "javascript",
+        "firebase"
+    ],
     "dependencies": {
         "axios": "^0.16.2",
         "babel-plugin-dynamic-import-webpack": "^1.0.1",
@@ -82,6 +89,7 @@
         "eslint-plugin-react": "^7.1.0",
         "file-loader": "^0.11.2",
         "flow-bin": "^0.48.0",
+        "html-webpack-plugin": "^2.30.1",
         "jest": "^20.0.4",
         "jest-serializer-enzyme": "^1.0.0",
         "moxios": "0.4.0",
