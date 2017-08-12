@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -11,9 +12,9 @@ module.exports = {
   ],
   devtool: 'cheap-eval-source-map',
   output: {
-    path: path.join(__dirname, 'public', '[hash]'),
-    filename: 'bundle.[hash].js',
-    publicPath: '/public/[hash]/'
+    path: path.join(__dirname, '/public'),
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   devServer: {
     hot: true,
@@ -70,5 +71,9 @@ module.exports = {
           }),
           new webpack.optimize.UglifyJsPlugin()
         ]
-      : [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()]
+      : [
+          new webpack.HotModuleReplacementPlugin(),
+          new webpack.NamedModulesPlugin(),
+          new HtmlWebpackPlugin({ template: 'index.html', hash: true })
+        ]
 };
