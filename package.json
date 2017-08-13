@@ -17,23 +17,16 @@
         "deploy": "firebase deploy",
         "deploy:hosting": "firebase deploy --only hosting",
         "deploy:functions": "firebase deploy --only functions",
-        "build": "webpack -p",
+        "build": "webpack --config webpack.config.prod.js -p",
         "watch": "webpack --watch",
         "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
         "start:dev": "webpack-dev-server --progress --colors --inline --watch --history-api-fallback",
         "start:prod": "webpack && node server.js"
     },
     "jest": {
-        "snapshotSerializers": [
-            "jest-serializer-enzyme"
-        ]
+        "snapshotSerializers": ["jest-serializer-enzyme"]
     },
-    "keywords": [
-        "reactJS",
-        "boilerplate",
-        "javascript",
-        "firebase"
-    ],
+    "keywords": ["reactJS", "boilerplate", "javascript", "firebase"],
     "dependencies": {
         "axios": "^0.16.2",
         "babel-plugin-dynamic-import-webpack": "^1.0.1",

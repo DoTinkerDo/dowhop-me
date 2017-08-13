@@ -1,24 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: __dirname,
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './src/index.jsx'
-  ],
-  devtool: 'cheap-eval-source-map',
+  entry: ['./src/index.jsx'],
+  devtool: false,
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js',
-    publicPath: '/public/'
-  },
-  devServer: {
-    hot: true,
-    publicPath: '/public/',
-    historyApiFallback: true
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json']
@@ -48,6 +39,10 @@ module.exports = {
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader'
+        // options: {
+        //   name: '[hash].[name].[ext]',
+        //   publicPath: '/public/fonts'
+        // }
       },
       {
         test: /\.scss$/,
@@ -59,5 +54,16 @@ module.exports = {
       }
     ]
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()]
+  plugins:
+    process.env.NODE_ENV === 'production'
+      ? [
+          new webpack.optimize.OccurrenceOrderPlugin(),
+          new webpack.DefinePlugin({
+            'process.env': {
+              NODE_ENV: JSON.stringify('production')
+            }
+          }),
+          new webpack.optimize.UglifyJsPlugin()
+        ]
+      : [new HtmlWebpackPlugin({ template: 'index.template.html', hash: true })]
 };
