@@ -34,15 +34,14 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url-loader?limit=20000&name=images/[name].[ext]'
+        loader: 'url-loader?limit=1024&name=images/[name].[ext]'
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
-        loader: 'file-loader'
-        // options: {
-        //   name: '[hash].[name].[ext]',
-        //   publicPath: '/public/fonts'
-        // }
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]'
+        }
       },
       {
         test: /\.scss$/,

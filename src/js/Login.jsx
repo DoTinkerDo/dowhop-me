@@ -27,7 +27,9 @@ class Login extends Component {
             createdOn: date,
             displayName: user.displayName,
             email: user.email,
-            photoURL: user.photoURL || `/src/images/profile-placeholder.png`,
+            photoURL:
+              user.photoURL ||
+              `https://firebasestorage.googleapis.com/v0/b/dowhop-me.appspot.com/o/assets%2Ficons%2Fprofile-placeholder.png?alt=media&token=04033fce-4c9b-4976-8407-da41981f8046`,
             uid: user.uid
           };
           appUserRef.update(userData);

@@ -12,8 +12,7 @@ module.exports = {
   devtool: 'cheap-eval-source-map',
   output: {
     path: path.join(__dirname, '/public'),
-    filename: 'bundle.js',
-    publicPath: '/public/'
+    filename: 'bundle.js'
   },
   devServer: {
     hot: true,
@@ -43,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url-loader?limit=20000&name=images/[name].[ext]'
+        loader: 'url-loader?limit=1024&name=images/[name].[ext]'
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,

@@ -14,7 +14,8 @@ node_modules/
 public/bundle.js
 public/*bundle*
 public/images/
-public/
+public/index.html
+public/*index
 
 _site/
 .sass-cache/
