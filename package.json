@@ -19,7 +19,7 @@
         "deploy:functions": "firebase deploy --only functions",
         "build": "webpack --config webpack.config.prod.js -p",
         "watch": "webpack --watch",
-        "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+        "start": "if-env NODE_ENV=production && yarn run start:prod || yarn run start:dev",
         "start:dev": "webpack-dev-server --progress --colors --inline --watch --history-api-fallback",
         "start:prod": "webpack && node server.js"
     },
