@@ -13,7 +13,9 @@ export const logout = () => {
   return dispatch => {
     dispatch({ type: 'ATTEMPTING_LOGOUT' });
     setTimeOut(() => {
-      dispatch(loggedOut());
+      auth.signOut().then(() => {
+        dispatch(loggedOut());
+      });
     }, 2000);
   };
 };
