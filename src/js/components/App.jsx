@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { auth } from '../firebase';
-import appAuth from './helpers/appAuth';
+import { auth } from '../../firebase';
+import appAuth from '../helpers/appAuth';
 import Wrapper from './Wrapper';
 import Landing from './Landing';
 import MainNav from './MainNav';

@@ -4,7 +4,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Row } from 'react-bootstrap';
 import injectSheet from 'react-jss';
-import appAuth from './helpers/appAuth';
+import appAuth from '../helpers/appAuth';
 
 const styles = {
   pullRight: {

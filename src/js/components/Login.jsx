@@ -6,8 +6,8 @@ import { Redirect } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
 import injectSheet from 'react-jss';
 import FirebaseUIAuth from './FirebaseUIAuth';
-import firebase, { database, auth, ui } from '../firebase';
-import appAuth from './helpers/appAuth';
+import firebase, { database, auth, ui } from '../../firebase';
+import appAuth from '../helpers/appAuth';
 
 const styles = {
   margin: {

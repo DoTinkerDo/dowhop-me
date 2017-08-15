@@ -3,7 +3,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import App from './js/App';
+import App from './js/components/App';
 
 import './sass/main.scss';
 
@@ -22,7 +22,7 @@ const renderApp = () => {
 renderApp();
 
 if (module.hot) {
-  module.hot.accept('./js/App', () => {
+  module.hot.accept('./js/components/App', () => {
     renderApp();
   });
 }

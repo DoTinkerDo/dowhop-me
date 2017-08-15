@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import LoadingDots from './LoadingDots';
 import CurrentUser from './CurrentUser';
-import { database } from '../firebase';
+import { database } from '../../firebase';
 
 class Profile extends Component {
   state = {
