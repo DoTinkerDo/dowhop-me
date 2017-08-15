@@ -4,10 +4,22 @@
 
 @font-face {
   font-family: 'Avenir Light';
-  src: url('/src/fonts/Avenir-Light.eot');
-  src: url('/src/fonts/Avenir-Light.eot?#iefix') format('embedded-opentype'),
-    url('/src/fonts/Avenir-Light.woff2') format('woff2'), url('/src/fonts/Avenir-Light.woff') format('woff'),
-    url('/src/fonts/Avenir-Light.ttf') format('truetype'), url('/src/fonts/Avenir-Light.svg#Avenir-Light') format('svg');
+  src: url('/fonts/Avenir-Light.eot');
+  src: url('/fonts/Avenir-Light.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Avenir-Light.woff2') format('woff2'), url('/fonts/Avenir-Light.woff') format('woff'),
+    url('/fonts/Avenir-Light.ttf') format('truetype'), url('/fonts/Avenir-Light.svg#Avenir-Light') format('svg');
   font-weight: 100;
   font-style: normal;
 }
+
+// @font-face {
+//   font-family: 'Avenir Light';
+//   src: url('gs://dowhop-me.appspot.com/assets/fonts/avenir/Avenir-Light.eot');
+//   src: url('gs://dowhop-me.appspot.com/assets/fonts/avenir/Avenir-Light.eot?#iefix') format('embedded-opentype'),
+//     url('gs://dowhop-me.appspot.com/assets/fonts/avenir/Avenir-Light.woff2') format('woff2'),
+//     url('gs://dowhop-me.appspot.com/assets/fonts/avenir/Avenir-Light.woff') format('woff'),
+//     url('gs://dowhop-me.appspot.com/assets/fonts/avenir/Avenir-Light.ttf') format('truetype'),
+//     url('gs://dowhop-me.appspot.com/assets/fonts/avenir/Avenir-Light.svg#Avenir-Light') format('svg');
+//   font-weight: 100;
+//   font-style: normal;
+// }

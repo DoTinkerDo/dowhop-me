@@ -20,7 +20,10 @@ const MainNav = ({ classes }: Object) =>
       <ul className={classes.fontStyles}>
         <li>
           <a href="https://www.dowhop.com/howitworks">
-            <img src="/src/images/dowhop-icon.png" alt="How it Works" />
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/dowhop-me.appspot.com/o/assets%2Ficons%2Fdowhop-icon.png?alt=media&token=e78f7583-b6ad-49f2-9ca5-04c170756d98"
+              alt="How it Works"
+            />
           </a>
         </li>
         <li>
