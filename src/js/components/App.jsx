@@ -19,7 +19,7 @@ import Me from './Me';
 import Profile from './Profile';
 import FourOhFour from './FourOhFour';
 
-// const store = createStore(reducer, compose(applyMiddleware(thunk)));
+const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
 class App extends React.Component {
   state = {
@@ -43,17 +43,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <Wrapper>
-        <AuthButton />
-        <MainNav />
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <PropsRoute path="/login" component={Login} updateUser={this.updateUser} />
-          <PrivateRoute path="/me" component={Me} redirectTo="/login" user={this.state.user} />
-          <PrivateRoute path="/profile" component={Profile} redirectTo="/login" user={this.state.user} />
-          <Route component={FourOhFour} />
-        </Switch>
-      </Wrapper>
+      <Provider store={store}>
+        <Wrapper>
+          <AuthButton />
+          <MainNav />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <PropsRoute path="/login" component={Login} updateUser={this.updateUser} />
+            <PrivateRoute path="/me" component={Me} redirectTo="/login" user={this.state.user} />
+            <PrivateRoute path="/profile" component={Profile} redirectTo="/login" user={this.state.user} />
+            <Route component={FourOhFour} />
+          </Switch>
+        </Wrapper>
+      </Provider>
     );
   }
 }
