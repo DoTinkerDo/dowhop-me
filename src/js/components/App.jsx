@@ -2,12 +2,8 @@
 
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { applyMiddleware, compose, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import reducer from '../reducers';
-// import { auth } from '../../firebase';
-// import appAuth from '../helpers/appAuth';
+import store from '../store';
 import Wrapper from './Wrapper';
 import Landing from './Landing';
 import MainNav from './MainNav';
@@ -20,8 +16,6 @@ import Profile from './Profile';
 import FourOhFour from './FourOhFour';
 
 import { startListeningToAuthChanges } from '../actions/auth';
-
-const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
 store.dispatch(startListeningToAuthChanges());
 

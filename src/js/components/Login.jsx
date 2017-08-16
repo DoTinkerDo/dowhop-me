@@ -60,7 +60,8 @@ class Login extends Component {
   };
 
   props: {
-    location: Object
+    location: Object,
+    authentication: Object
     // updateUser: Function,
     // classes: Object
   };
@@ -71,8 +72,7 @@ class Login extends Component {
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     // const { classes } = this.props;
-    // console.log(this.props.auth.isAuthenticated);
-    if (this.props.auth.isAuthenticated) {
+    if (this.props.authentication.isAuthenticated) {
       return <Redirect to={from} />;
     }
     return (
@@ -86,7 +86,7 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => ({ auth });
+const mapStateToProps = ({ authentication }) => ({ authentication });
 
 export default connect(mapStateToProps)(Login);
 
