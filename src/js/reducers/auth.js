@@ -1,8 +1,13 @@
 export default function authReducer(state = 'ANONYMOUS', action) {
+  console.log('CALLED WITH -> ', action.type);
   switch (action.type) {
     case 'ATTEMPTING_LOGIN':
       return {
         status: 'AWAITING_AUTH_RESPONSE'
+      };
+    case 'ATTEMPTING_LOGOUT':
+      return {
+        status: 'AWAITING_LOGOUT_AUTH_RESPONSE'
       };
     case 'LOGOUT':
       return {
@@ -10,7 +15,8 @@ export default function authReducer(state = 'ANONYMOUS', action) {
         email: null,
         displayName: null,
         photoURL: null,
-        uid: null
+        uid: null,
+        isAuthenticated: false
       };
     case 'LOGIN':
       return {
@@ -18,7 +24,8 @@ export default function authReducer(state = 'ANONYMOUS', action) {
         email: action.email,
         displayName: action.displayName,
         photoURL: action.photoURL,
-        uid: action.uid
+        uid: action.uid,
+        isAuthenticated: action.isAuthenticated
       };
     default:
       return state;

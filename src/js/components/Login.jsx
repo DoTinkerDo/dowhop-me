@@ -1,19 +1,20 @@
 // @flow
 
 import React, { Component } from 'react';
-import moment from 'moment';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import moment from 'moment';
 import { Row } from 'react-bootstrap';
-import injectSheet from 'react-jss';
+// import injectSheet from 'react-jss';
 import FirebaseUIAuth from './FirebaseUIAuth';
 import firebase, { database, auth, ui } from '../../firebase';
 import appAuth from '../helpers/appAuth';
 
-const styles = {
-  margin: {
-    marginBottom: '20%'
-  }
-};
+// const styles = {
+//   margin: {
+//     marginBottom: '20%'
+//   }
+// };
 
 class Login extends Component {
   componentDidMount() {
@@ -53,15 +54,15 @@ class Login extends Component {
     ]
   };
 
-  login = (user: Object) => {
+  login = () => {
     appAuth.authenticate();
-    this.props.updateUser(user);
+    // this.props.updateUser(user);
   };
 
   props: {
-    location: Object,
-    updateUser: Function,
-    classes: Object
+    location: Object
+    // updateUser: Function,
+    // classes: Object
   };
 
   appUsersRef = database.ref('appUsers');
@@ -69,12 +70,13 @@ class Login extends Component {
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
-    const { classes } = this.props;
-    if (appAuth.isAuthenticated) {
+    // const { classes } = this.props;
+    // console.log(this.props.auth.isAuthenticated);
+    if (this.props.auth.isAuthenticated) {
       return <Redirect to={from} />;
     }
     return (
-      <Row className={classes.margin}>
+      <Row>
         <p className="text-center">
           You must be logged in to view the page at {from.pathname}
         </p>
@@ -84,4 +86,8 @@ class Login extends Component {
   }
 }
 
-export default injectSheet(styles)(Login);
+const mapStateToProps = ({ auth }) => ({ auth });
+
+export default connect(mapStateToProps)(Login);
+
+// export default injectSheet(styles)(Login);

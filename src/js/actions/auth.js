@@ -1,54 +1,37 @@
-import { auth, database, ui } from '../../firebase';
-import { addUser } from '.';
+// import { auth, database, authUI } from '../../firebase';
+// import { addUser } from './users';
+import { auth } from '../../firebase';
+// import appAuth from '../helpers/appAuth';
 
-export const login = () => {
-  return dispatch => {
-    dispatch({ type: 'ATTEMPTING_LOGIN' });
-    auth.signInWithPopup(googleAuthProvider).then(({ user }) => {
+const loggedIn = user => ({
+  type: 'LOGIN',
+  email: user.email,
+  displayName: user.displayName,
+  photoURL: user.photoURL,
+  uid: user.uid,
+  isAuthenticated: true
+});
+
+const loggedOut = () => ({
+  type: 'LOGOUT'
+});
+
+export const login = () => dispatch => {
+  dispatch({ type: 'ATTEMPTING_LOGIN' });
+  // auth.signInWithPopup(googleAuthProvider);
+};
+
+export const logout = () => dispatch => {
+  dispatch({ type: 'ATTEMPTING_LOGOUT' });
+  auth.signOut();
+};
+
+export const startListeningToAuthChanges = () => dispatch => {
+  auth.onAuthStateChanged(user => {
+    if (user) {
       dispatch(loggedIn(user));
-      dispatch(addUser(user));
-    });
-    setTimeOut(() => {
-      dispatch(loggedIn());
-    }, 2000);
-  };
-};
-
-export const logout = () => {
-  return dispatch => {
-    dispatch({ type: 'ATTEMPTING_LOGOUT' });
-    setTimeOut(() => {
-      auth.signOut().then(() => {
-        dispatch(loggedOut());
-      });
-    }, 2000);
-  };
-};
-
-const loggedIn = user => {
-  return {
-    type: 'LOGIN',
-    email: user.email,
-    displayName: user.displayName,
-    photoURL: user.photoURL,
-    uid: user.uid
-  };
-};
-
-const loggedOut = user => {
-  return {
-    type: 'LOGOUT'
-  };
-};
-
-export const startListeningToAuthChanges = () => {
-  return dispatch => {
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        dispatch(loggedIn(user));
-      } else {
-        dispatch(loggedOut());
-      }
-    });
-  };
+    } else {
+      dispatch(loggedOut());
+    }
+  });
 };

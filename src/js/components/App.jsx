@@ -6,8 +6,8 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducer from '../reducers';
-import { auth } from '../../firebase';
-import appAuth from '../helpers/appAuth';
+// import { auth } from '../../firebase';
+// import appAuth from '../helpers/appAuth';
 import Wrapper from './Wrapper';
 import Landing from './Landing';
 import MainNav from './MainNav';
@@ -19,28 +19,13 @@ import Me from './Me';
 import Profile from './Profile';
 import FourOhFour from './FourOhFour';
 
+import { startListeningToAuthChanges } from '../actions/auth';
+
 const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
+store.dispatch(startListeningToAuthChanges());
+
 class App extends React.Component {
-  state = {
-    user: {}
-  };
-
-  componentDidMount() {
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        appAuth.authenticate();
-        this.setState({ user });
-      } else {
-        this.setState({ user: {} });
-      }
-    });
-  }
-
-  updateUser = (user: Object) => {
-    this.setState({ user });
-  };
-
   render() {
     return (
       <Provider store={store}>
@@ -49,9 +34,9 @@ class App extends React.Component {
           <MainNav />
           <Switch>
             <Route exact path="/" component={Landing} />
-            <PropsRoute path="/login" component={Login} updateUser={this.updateUser} />
-            <PrivateRoute path="/me" component={Me} redirectTo="/login" user={this.state.user} />
-            <PrivateRoute path="/profile" component={Profile} redirectTo="/login" user={this.state.user} />
+            <PropsRoute path="/login" component={Login} />
+            <PrivateRoute path="/me" component={Me} redirectTo="/login" />
+            <PrivateRoute path="/profile" component={Profile} redirectTo="/login" />
             <Route component={FourOhFour} />
           </Switch>
         </Wrapper>
