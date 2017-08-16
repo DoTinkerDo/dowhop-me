@@ -6,7 +6,7 @@ import { Route, Redirect } from 'react-router-dom';
 import renderMergedProps from '../helpers/renderMergedProps';
 
 const PrivateRoute = ({ component, redirectTo, authentication, ...rest }: Object) => {
-  console.log('PRIVATE ROUTE ->', authentication.isAuthenticated);
+  console.log('PRIVATE ROUTE ->', authentication.status);
   return (
     <Route
       {...rest}
