@@ -19,24 +19,19 @@ import { startListeningToAuthChanges } from '../actions/auth';
 
 store.dispatch(startListeningToAuthChanges());
 
-class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Wrapper>
-          <AuthButton />
-          <MainNav />
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <PropsRoute path="/login" component={Login} />
-            <PrivateRoute path="/me" component={Me} redirectTo="/login" />
-            <PrivateRoute path="/profile" component={Profile} redirectTo="/login" />
-            <Route component={FourOhFour} />
-          </Switch>
-        </Wrapper>
-      </Provider>
-    );
-  }
-}
+const App = () =>
+  <Provider store={store}>
+    <Wrapper>
+      <AuthButton />
+      <MainNav />
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <PropsRoute path="/login" component={Login} />
+        <PrivateRoute path="/me" component={Me} redirectTo="/login" />
+        <PrivateRoute path="/profile" component={Profile} redirectTo="/login" />
+        <Route component={FourOhFour} />
+      </Switch>
+    </Wrapper>
+  </Provider>;
 
 export default App;
