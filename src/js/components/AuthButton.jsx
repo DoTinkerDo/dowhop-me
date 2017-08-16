@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { Button, Row } from 'react-bootstrap';
 // import injectSheet from 'react-jss';
-// import appAuth from '../helpers/appAuth';
 
 // const styles = {
 //   pullRight: {
@@ -14,11 +13,11 @@ import { Button, Row } from 'react-bootstrap';
 //   }
 // };
 
-const AuthButton = withRouter(({ history, auth }) => {
-  console.log('AUTHBUTTON ->', auth.isAuthenticated);
+const AuthButton = withRouter(({ history, authentication }) => {
+  console.log('AUTHBUTTON ->', authentication.isAuthenticated);
   return (
     <Row>
-      {auth.isAuthenticated
+      {authentication.isAuthenticated
         ? <Button
             onClick={() => {
               history.push('/');
@@ -33,8 +32,6 @@ const AuthButton = withRouter(({ history, auth }) => {
   );
 });
 
-const mapStateToProps = ({ auth }) => ({ auth });
+const mapStateToProps = ({ authentication }) => ({ authentication });
 
 export default connect(mapStateToProps)(AuthButton);
-
-// export default injectSheet(styles)(AuthButton);

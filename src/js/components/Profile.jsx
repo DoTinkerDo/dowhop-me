@@ -34,11 +34,12 @@ class Profile extends Component {
   };
 
   props: {
-    uid: string
+    uid: string,
+    authentication: Object
   };
 
   appUsersRef = database.ref('appUsers');
-  appUserRef = this.appUsersRef.child(this.props.uid);
+  appUserRef = this.appUsersRef.child(this.props.authentication.uid);
 
   render() {
     const { currentUser, value } = this.state;
@@ -57,6 +58,6 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => auth;
+const mapStateToProps = ({ authentication }) => ({ authentication });
 
 export default connect(mapStateToProps)(Profile);

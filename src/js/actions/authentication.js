@@ -1,7 +1,6 @@
 // import { auth, database, authUI } from '../../firebase';
 // import { addUser } from './users';
 import { auth } from '../../firebase';
-// import appAuth from '../helpers/appAuth';
 
 const loggedIn = user => ({
   type: 'LOGIN',

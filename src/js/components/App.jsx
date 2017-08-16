@@ -15,7 +15,7 @@ import Me from './Me';
 import Profile from './Profile';
 import FourOhFour from './FourOhFour';
 
-import { startListeningToAuthChanges } from '../actions/auth';
+import { startListeningToAuthChanges } from '../actions/authentication';
 
 store.dispatch(startListeningToAuthChanges());
 

@@ -70,8 +70,9 @@ class Login extends Component {
   unsubscribe;
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
     // const { classes } = this.props;
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+
     if (this.props.authentication.isAuthenticated) {
       return <Redirect to={from} />;
     }

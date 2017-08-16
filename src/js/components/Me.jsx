@@ -3,20 +3,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Me = ({ auth }: Object) => {
-  console.log('ME AUTH -> ', auth.status);
+const Me = ({ authentication }: Object) => {
+  console.log('ME AUTH -> ', authentication.status);
   return (
     <div>
       <h2>This is the Me Page</h2>
       <p>
-        {auth.status}
+        {authentication.status}
         <br />
-        {auth.displayName || 'Placeholder me name'}
+        {authentication.displayName || 'Placeholder me name'}
       </p>
     </div>
   );
 };
 
-const mapStateToProps = ({ auth }) => ({ auth });
+const mapStateToProps = ({ authentication }) => ({ authentication });
 
 export default connect(mapStateToProps)(Me);
