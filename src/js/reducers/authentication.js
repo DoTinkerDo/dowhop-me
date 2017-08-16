@@ -1,5 +1,4 @@
 export default function authReducer(state = 'ANONYMOUS', action) {
-  console.log('CALLED WITH -> ', action.type);
   switch (action.type) {
     case 'ATTEMPTING_LOGIN':
       return {

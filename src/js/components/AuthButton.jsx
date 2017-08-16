@@ -15,26 +15,23 @@ import LoadingDots from './LoadingDots';
 //   }
 // };
 
-const AuthButton = withRouter(({ history, authentication, logOut }) => {
-  console.log('AUTHBUTTON ->', authentication.status);
-  return (
-    <Row>
-      {authentication.isAuthenticated
-        ? <Button
-            onClick={() => {
-              logOut();
-              history.push('/');
-            }}
-          >
-            Logout
-          </Button>
-        : <Link to="/login">
-            <Button>Login</Button>
-          </Link>}
-      {authentication.status === 'AWAITING_AUTH_RESPONSE' && <LoadingDots />}
-    </Row>
-  );
-});
+const AuthButton = withRouter(({ history, authentication, logOut }) =>
+  <Row>
+    {authentication.isAuthenticated
+      ? <Button
+          onClick={() => {
+            logOut();
+            history.push('/');
+          }}
+        >
+          Logout
+        </Button>
+      : <Link to="/login">
+          <Button>Login</Button>
+        </Link>}
+    {authentication.status === 'AWAITING_AUTH_RESPONSE' && <LoadingDots />}
+  </Row>
+);
 
 const mapStateToProps = ({ authentication }) => ({ authentication });
 
