@@ -1,15 +1,15 @@
 // @flow
 
 import React from 'react';
+import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import renderMergedProps from './helpers/renderMergedProps';
-import appAuth from './helpers/appAuth';
+import renderMergedProps from '../helpers/renderMergedProps';
 
-const PrivateRoute = ({ component, redirectTo, ...rest }: Object) =>
+const PrivateRoute = ({ component, redirectTo, authentication, ...rest }: Object) =>
   <Route
     {...rest}
     render={routeProps =>
-      appAuth.isAuthenticated
+      authentication.isAuthenticated
         ? renderMergedProps(component, routeProps, rest)
         : <Redirect
             to={{
@@ -19,4 +19,6 @@ const PrivateRoute = ({ component, redirectTo, ...rest }: Object) =>
           />}
   />;
 
-export default PrivateRoute;
+const mapStateToProps = ({ authentication }) => ({ authentication });
+
+export default connect(mapStateToProps)(PrivateRoute);

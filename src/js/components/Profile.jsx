@@ -1,9 +1,10 @@
 // @flow
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import LoadingDots from './LoadingDots';
 import CurrentUser from './CurrentUser';
-import { database } from '../firebase';
+import { database } from '../../firebase';
 
 class Profile extends Component {
   state = {
@@ -33,11 +34,12 @@ class Profile extends Component {
   };
 
   props: {
-    user: Object
+    uid: string,
+    authentication: Object
   };
 
   appUsersRef = database.ref('appUsers');
-  appUserRef = this.appUsersRef.child(this.props.user.uid);
+  appUserRef = this.appUsersRef.child(this.props.authentication.uid);
 
   render() {
     const { currentUser, value } = this.state;
@@ -56,4 +58,6 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = ({ authentication }) => ({ authentication });
+
+export default connect(mapStateToProps)(Profile);
