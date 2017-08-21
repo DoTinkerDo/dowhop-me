@@ -8,20 +8,8 @@ import { database } from '../../firebase';
 
 class Profile extends Component {
   state = {
-    currentUser: null,
     value: ''
   };
-
-  componentDidMount() {
-    this.appUserRef.on('value', snapshot => {
-      const currentUser = snapshot.val();
-      this.setState({ currentUser });
-    });
-  }
-
-  componentWillUnmount() {
-    this.appUserRef.off();
-  }
 
   handleChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
     this.setState({ value: event.target.value });
@@ -35,14 +23,17 @@ class Profile extends Component {
 
   props: {
     uid: string,
-    authentication: Object
+    authentication: Object,
+    currentUser: Object
   };
 
   appUsersRef = database.ref('appUsers');
   appUserRef = this.appUsersRef.child(this.props.authentication.uid);
 
   render() {
-    const { currentUser, value } = this.state;
+    const { value } = this.state;
+    const { currentUser } = this.props;
+    console.log('REDUX USER -> ', currentUser);
     return (
       <div>
         {!currentUser
@@ -58,6 +49,6 @@ class Profile extends Component {
   }
 }
 
-const mapStateToProps = ({ authentication }) => ({ authentication });
+const mapStateToProps = ({ authentication, currentUser }) => ({ authentication, currentUser });
 
 export default connect(mapStateToProps)(Profile);

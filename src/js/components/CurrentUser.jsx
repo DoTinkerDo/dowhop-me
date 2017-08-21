@@ -3,6 +3,7 @@
 import React from 'react';
 import { Button, Col, FormControl, Row, Thumbnail } from 'react-bootstrap';
 import injectSheet from 'react-jss';
+import LoadingDots from './LoadingDots';
 
 const styles = {
   margin: {
@@ -21,6 +22,7 @@ const CurrentUser = (props: {
   return (
     <Row>
       <Col xs={12} md={6}>
+        {!user.photoURL && <LoadingDots />}
         <Thumbnail src={user.photoURL} alt={`headshot for ${user.story}`}>
           <h3>
             {user.displayName}
