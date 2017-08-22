@@ -1,0 +1,5 @@
+// @flow
+
+const SET_USER_PROFILE_STORY = 'SET_USER_PROFILE_STORY';
+
+export default SET_USER_PROFILE_STORY;

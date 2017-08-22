@@ -8,18 +8,9 @@ import { database } from '../../firebase';
 import setUserStory from '../actions/profile';
 
 class Profile extends Component {
-  // state = {
-  //   value: ''
-  // };
-
-  // handleChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
-  //   this.setState({ value: event.target.value });
-  // };
-
   handleSubmit = (uid: string) => {
     const appUserRef = this.appUsersRef.child(uid);
     appUserRef.update({ story: this.props.profile });
-    // this.setState({ value: '' });
   };
 
   props: {
@@ -34,10 +25,7 @@ class Profile extends Component {
   appUserRef = this.appUsersRef.child(this.props.authentication.uid);
 
   render() {
-    // const { value } = this.state;
     const { currentUser, profile, handleUserStoryChange } = this.props;
-    // console.log('REDUX USER -> ', currentUser);
-    console.log('VALUE -> ', profile);
     return (
       <div>
         {!currentUser
