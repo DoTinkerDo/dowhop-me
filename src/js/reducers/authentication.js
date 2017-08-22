@@ -1,4 +1,6 @@
-export default function authReducer(state = 'ANONYMOUS', action) {
+// @flow
+
+export default function authReducer(state: string = 'ANONYMOUS', action: Object) {
   switch (action.type) {
     case 'ATTEMPTING_LOGIN':
       return {

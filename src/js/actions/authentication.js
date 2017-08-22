@@ -1,3 +1,5 @@
+// @flow
+
 import moment from 'moment';
 import { auth, database } from '../../firebase';
 
@@ -16,17 +18,17 @@ const loggedOut = () => ({
   type: 'LOGOUT'
 });
 
-export const login = () => dispatch => {
+export const login = () => (dispatch: Function) => {
   dispatch({ type: 'ATTEMPTING_LOGIN' });
   // TODO ADD SIGNIN METHOD FROM LOGIN.JSX HERE
 };
 
-export const logout = () => dispatch => {
+export const logout = () => (dispatch: Function) => {
   dispatch({ type: 'ATTEMPTING_LOGOUT' });
   auth.signOut();
 };
 
-export const startListeningToAuthChanges = () => dispatch => {
+export const startListeningToAuthChanges = () => (dispatch: Function) => {
   auth.onAuthStateChanged(user => {
     if (user) {
       dispatch(loggedIn(user));

@@ -1,4 +1,6 @@
-export default function currentUserReducer(state = [], action) {
+// @flow
+
+export default function currentUserReducer(state: ?Array<any> = [], action: Object) {
   switch (action.type) {
     case 'ADD_USER':
       return {

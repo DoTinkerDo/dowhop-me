@@ -1,3 +1,5 @@
+// @flow
+
 import { auth, database } from '../../firebase';
 
 const addCurrentUser = user => ({
@@ -10,7 +12,7 @@ const addCurrentUser = user => ({
   photoURL: user.photoURL
 });
 
-const startListeningForCurrentUser = () => dispatch => {
+const startListeningForCurrentUser = () => (dispatch: Function) => {
   auth.onAuthStateChanged(user => {
     if (user) {
       const userRef = database.ref('appUsers').child(user.uid);
