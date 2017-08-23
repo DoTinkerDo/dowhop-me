@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import LoadingDots from './LoadingDots';
 import CurrentUser from './CurrentUser';
 import { database } from '../../firebase';
-import setUserStory from '../actions/profile';
+import { storyValue } from '../actions/profile';
 
 class Profile extends Component {
   handleSubmit = (uid: string) => {
@@ -45,7 +45,7 @@ const mapStateToProps = ({ authentication, currentUser, profile }) => ({ authent
 
 const mapDispatchToProps = (dispatch: Function) => ({
   handleUserStoryChange(e) {
-    dispatch(setUserStory(e.target.value));
+    dispatch(storyValue(e.target.value));
   }
 });
 
