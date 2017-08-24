@@ -17,8 +17,10 @@ const startListeningForCurrentUser = () => (dispatch: Function) => {
     if (user) {
       const userRef = database.ref('appUsers').child(user.uid);
       userRef.on('value', snapshot => {
-        const appUser = snapshot.val();
-        dispatch(addCurrentUser(appUser));
+        if (snapshot.val()) {
+          const appUser = snapshot.val();
+          dispatch(addCurrentUser(appUser));
+        }
       });
     }
   });
