@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react';
-import { connect } from 'react-redux';
 
 const Me = ({ currentUser, profile }: Object) =>
   <div>
@@ -15,6 +14,4 @@ const Me = ({ currentUser, profile }: Object) =>
     </p>
   </div>;
 
-const mapStateToProps = ({ currentUser, profile }) => ({ currentUser, profile });
-
-export default connect(mapStateToProps)(Me);
+export default Me;
