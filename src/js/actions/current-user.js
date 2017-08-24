@@ -1,9 +1,10 @@
 // @flow
 
 import { auth, database } from '../../firebase';
+import { ADD_USER } from './actions';
 
 const addCurrentUser = user => ({
-  type: 'ADD_USER',
+  type: ADD_USER,
   displayName: user.displayName,
   createdOn: user.createdOn,
   uid: user.uid,

@@ -2,11 +2,12 @@
 
 import moment from 'moment';
 import { auth, database } from '../../firebase';
+import { LOGIN, LOGOUT, ATTEMPTING_LOGIN, ATTEMPTING_LOGOUT } from './actions';
 
 const appUsersRef = database.ref('appUsers');
 
 const loggedIn = user => ({
-  type: 'LOGIN',
+  type: LOGIN,
   email: user.email,
   displayName: user.displayName,
   photoURL: user.photoURL,
@@ -15,16 +16,16 @@ const loggedIn = user => ({
 });
 
 const loggedOut = () => ({
-  type: 'LOGOUT'
+  type: LOGOUT
 });
 
 export const login = () => (dispatch: Function) => {
-  dispatch({ type: 'ATTEMPTING_LOGIN' });
+  dispatch({ type: ATTEMPTING_LOGIN });
   // TODO ADD SIGNIN METHOD FROM LOGIN.JSX HERE
 };
 
 export const logout = () => (dispatch: Function) => {
-  dispatch({ type: 'ATTEMPTING_LOGOUT' });
+  dispatch({ type: ATTEMPTING_LOGOUT });
   auth.signOut();
 };
 
