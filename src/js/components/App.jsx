@@ -16,9 +16,11 @@ import Profile from './Profile';
 import FourOhFour from './FourOhFour';
 import { startListeningToAuthChanges } from '../actions/authentication';
 import startListeningForCurrentUser from '../actions/current-user';
+import { startListeningForUserProfileChanges } from '../actions/profile';
 
 store.dispatch(startListeningToAuthChanges());
 store.dispatch(startListeningForCurrentUser());
+store.dispatch(startListeningForUserProfileChanges());
 
 const App = () =>
   <Provider store={store}>

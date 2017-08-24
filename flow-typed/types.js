@@ -6,4 +6,4 @@ declare var module: {
   }
 };
 
-export type Action = ActionT<'SET_SEARCH_TERM', string>;
+export type Action = ActionT<'SET_USER_PROFILE_STORY', string>;

@@ -1,51 +1,50 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import LoadingDots from './LoadingDots';
 import CurrentUser from './CurrentUser';
-import { database } from '../../firebase';
-import { storyValue } from '../actions/profile';
+import { storyValue, createStory, clearInput } from '../actions/profile';
 
-class Profile extends Component {
-  handleSubmit = (uid: string) => {
-    const appUserRef = this.appUsersRef.child(uid);
-    appUserRef.update({ story: this.props.profile });
-  };
+const Profile = (props: {
+  currentUser: Object,
+  profile: Object,
+  value: string,
+  handleChange: Function,
+  handleSubmit: Function
+}) => {
+  const { currentUser, value, profile, handleChange, handleSubmit } = props;
+  console.log(profile.story, ' == ', value);
+  return (
+    <div>
+      {!currentUser
+        ? <LoadingDots />
+        : <CurrentUser
+            user={currentUser}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            value={value}
+            profile={profile}
+          />}
+    </div>
+  );
+};
 
-  props: {
-    uid: string,
-    authentication: Object,
-    currentUser: Object,
-    profile: string,
-    handleUserStoryChange: Function
-  };
-
-  appUsersRef = database.ref('appUsers');
-  appUserRef = this.appUsersRef.child(this.props.authentication.uid);
-
-  render() {
-    const { currentUser, profile, handleUserStoryChange } = this.props;
-    return (
-      <div>
-        {!currentUser
-          ? <LoadingDots />
-          : <CurrentUser
-              user={currentUser}
-              handleChange={handleUserStoryChange}
-              handleSubmit={this.handleSubmit}
-              value={profile}
-            />}
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = ({ authentication, currentUser, profile }) => ({ authentication, currentUser, profile });
+const mapStateToProps = ({ authentication, currentUser, value, profile }) => ({
+  authentication,
+  currentUser,
+  value,
+  profile
+});
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  handleUserStoryChange(e) {
+  handleChange(e) {
     dispatch(storyValue(e.target.value));
+  },
+  handleSubmit(e, story, uid) {
+    e.preventDefault();
+    dispatch(createStory({ story, uid }));
+    dispatch(clearInput());
   }
 });
 

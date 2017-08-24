@@ -5,7 +5,6 @@ export default function currentUserReducer(state: ?Array<any> = [], action: Obje
     case 'ADD_USER':
       return {
         displayName: action.displayName,
-        story: action.story,
         createdOn: action.createdOn,
         uid: action.uid,
         email: action.email,
