@@ -11,12 +11,16 @@ import AuthButton from './AuthButton';
 import PrivateRoute from './PrivateRoute';
 import PropsRoute from './PropsRoute';
 import Login from './Login';
-import Me from './Me';
-import Profile from './Profile';
+import MeContainer from '../containers/MeContainer';
+import ProfileContainer from '../containers/ProfileContainer';
 import FourOhFour from './FourOhFour';
 import { startListeningToAuthChanges } from '../actions/authentication';
+import startListeningForCurrentUser from '../actions/current-user';
+import { startListeningForUserProfileChanges } from '../actions/profile';
 
 store.dispatch(startListeningToAuthChanges());
+store.dispatch(startListeningForCurrentUser());
+store.dispatch(startListeningForUserProfileChanges());
 
 const App = () =>
   <Provider store={store}>
@@ -26,8 +30,8 @@ const App = () =>
       <Switch>
         <Route exact path="/" component={Landing} />
         <PropsRoute path="/login" component={Login} />
-        <PrivateRoute path="/me" component={Me} redirectTo="/login" />
-        <PrivateRoute path="/profile" component={Profile} redirectTo="/login" />
+        <PrivateRoute path="/me" component={MeContainer} redirectTo="/login" />
+        <PrivateRoute path="/profile" component={ProfileContainer} redirectTo="/login" />
         <Route component={FourOhFour} />
       </Switch>
     </Wrapper>

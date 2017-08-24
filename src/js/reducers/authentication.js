@@ -1,14 +1,18 @@
-export default function authReducer(state = 'ANONYMOUS', action) {
+// @flow
+
+import { LOGIN, LOGOUT, ATTEMPTING_LOGIN, ATTEMPTING_LOGOUT } from '../actions/actions';
+
+export default function authReducer(state: string = 'ANONYMOUS', action: Object) {
   switch (action.type) {
-    case 'ATTEMPTING_LOGIN':
+    case ATTEMPTING_LOGIN:
       return {
         status: 'AWAITING_AUTH_RESPONSE'
       };
-    case 'ATTEMPTING_LOGOUT':
+    case ATTEMPTING_LOGOUT:
       return {
         status: 'AWAITING_LOGOUT_AUTH_RESPONSE'
       };
-    case 'LOGOUT':
+    case LOGOUT:
       return {
         status: 'ANONYMOUS',
         email: null,
@@ -17,7 +21,7 @@ export default function authReducer(state = 'ANONYMOUS', action) {
         uid: null,
         isAuthenticated: false
       };
-    case 'LOGIN':
+    case LOGIN:
       return {
         status: 'LOGGED_IN',
         email: action.email,

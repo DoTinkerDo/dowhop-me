@@ -3,6 +3,7 @@
 import React from 'react';
 import { Button, Col, FormControl, Row, Thumbnail } from 'react-bootstrap';
 import injectSheet from 'react-jss';
+import LoadingDots from './LoadingDots';
 
 const styles = {
   margin: {
@@ -13,20 +14,22 @@ const styles = {
 const CurrentUser = (props: {
   user: Object,
   value: string,
+  profile: Object,
   handleChange: Function,
   handleSubmit: Function,
   classes: Object
 }) => {
-  const { user, value, handleChange, handleSubmit, classes } = props;
+  const { user, value, profile, handleChange, handleSubmit, classes } = props;
   return (
     <Row>
       <Col xs={12} md={6}>
+        {!user.photoURL && <LoadingDots />}
         <Thumbnail src={user.photoURL} alt={`headshot for ${user.story}`}>
           <h3>
             {user.displayName}
           </h3>
           <p>
-            {user.story || 'Your story'}
+            {profile.story || 'Your story'}
           </p>
           <p>
             {user.email}
@@ -42,7 +45,8 @@ const CurrentUser = (props: {
             </small>
           </p>
           <FormControl type="text" value={value} placeholder="Enter your story" onChange={handleChange} />
-          <Button onClick={() => handleSubmit(user.uid)} className={classes.margin}>
+          <Button onClick={e => handleSubmit(e, value, user.uid)} className={classes.margin}>
+            {/* Q: alternatives to inline func? Perf issues? */}
             Save
           </Button>
         </Thumbnail>
