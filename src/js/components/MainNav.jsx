@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Row } from 'react-bootstrap';
+import { Row } from 'reactstrap';
 import injectSheet from 'react-jss';
 
 const styles = {
@@ -14,7 +14,7 @@ const styles = {
   }
 };
 
-const MainNav = ({ classes }: Object) =>
+const MainNav = ({ classes }: Object) => (
   <Row>
     <nav className={classes.margin}>
       <ul className={classes.fontStyles}>
@@ -37,6 +37,7 @@ const MainNav = ({ classes }: Object) =>
         </li>
       </ul>
     </nav>
-  </Row>;
+  </Row>
+);
 
 export default injectSheet(styles)(MainNav);

@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Row } from 'react-bootstrap';
+import { Row } from 'reactstrap';
 // import injectSheet from 'react-jss';
 import FirebaseUIAuth from './FirebaseUIAuth';
 import firebase, { ui } from '../../firebase';
@@ -41,9 +41,7 @@ class Login extends Component {
     }
     return (
       <Row>
-        <p className="text-center">
-          You must be logged in to view the page at {from.pathname}
-        </p>
+        <p className="text-center">You must be logged in to view the page at {from.pathname}</p>
         <FirebaseUIAuth ui={ui} {...this.uiConfig} />
       </Row>
     );

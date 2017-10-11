@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'reactstrap';
 import injectSheet from 'react-jss';
 
 const styles = {
@@ -10,17 +10,16 @@ const styles = {
   }
 };
 
-const Wrapper = ({ classes, children }: Object) =>
-  <Grid className={classes.background}>
+const Wrapper = ({ classes, children }: Object) => (
+  <Container className={classes.background}>
     <Row>
       <Col md={12}>
         <div className="site-content">
-          <div className="site-main">
-            {children}
-          </div>
+          <div className="site-main">{children}</div>
         </div>
       </Col>
     </Row>
-  </Grid>;
+  </Container>
+);
 
 export default injectSheet(styles)(Wrapper);
