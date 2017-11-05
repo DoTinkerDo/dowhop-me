@@ -3,6 +3,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import injectSheet from 'react-jss';
+import AuthButton from './AuthButton';
 
 const styles = {
   background: {
@@ -13,10 +14,13 @@ const styles = {
 const Wrapper = ({ classes, children }: Object) => (
   <Container className={classes.background}>
     <Row>
-      <Col md={12}>
-        <div className="site-content">
-          <div className="site-main">{children}</div>
-        </div>
+      <Col className="offset-md-3">
+        <AuthButton />
+      </Col>
+    </Row>
+    <Row>
+      <Col className="site-content">
+        <div className="site-main">{children}</div>
       </Col>
     </Row>
   </Container>
