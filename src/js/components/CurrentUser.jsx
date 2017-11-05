@@ -1,51 +1,111 @@
 // @flow
 
 import React from 'react';
-import { Button, Col, Card, CardBody, CardImg, CardTitle, Input, Row } from 'reactstrap';
-import injectSheet from 'react-jss';
+import { Col, Card, CardSubtitle, CardText, CardBody, CardImg, Row } from 'reactstrap';
+import FileInput from './FileInput';
 import LoadingDots from './LoadingDots';
-
-const styles = {
-  margin: {
-    marginTop: '1%'
-  }
-};
+import ProfileHeadlineInput from './ProfileHeadlineInput';
+import ProfileAboutInput from './ProfileAboutInput';
+import SocialMediaIcons from './SocialMediaIcons';
+import SocialMediaEditModal from './SocialMediaEditModal';
 
 const CurrentUser = (props: {
-  user: Object,
+  uid: string,
+  email: string,
+  about: Object,
+  headline: Object,
   value: string,
-  profile: Object,
+  headlineValue: string,
+  displayName: string,
+  profileUrl: string,
   handleChange: Function,
+  handleHeadlineChange: Function,
+  handleHeadlineSubmit: Function,
   handleSubmit: Function,
-  classes: Object
+  headline: Object,
+  handleImageSubmit: Function,
+  imageName: string,
+  socialUrls: Object,
+  handleSocialMediaUrlSubmit: Function,
+  socialInputs: Object,
+  handleSocialUrlChange: Function
 }) => {
-  const { user, value, profile, handleChange, handleSubmit, classes } = props;
+  const {
+    uid,
+    email,
+    about,
+    value,
+    handleChange,
+    handleSubmit,
+    displayName,
+    profileUrl,
+    headlineValue,
+    handleHeadlineChange,
+    handleHeadlineSubmit,
+    headline,
+    handleImageSubmit,
+    imageName,
+    socialUrls,
+    handleSocialMediaUrlSubmit,
+    socialInputs,
+    handleSocialUrlChange
+  } = props;
   return (
-    <Row>
-      <Col xs={12} md={6}>
-        {!user.photoURL && <LoadingDots />}
-        <Card>
-          <CardImg src={user.photoURL} alt={`headshot for ${user.story}`} />
-          <CardBody>
-            <CardTitle>{user.displayName}</CardTitle>
-            <p>{profile.story || 'Your story'}</p>
-            <p>{user.email}</p>
-            <p>
-              <small>{user.uid}</small>
-            </p>
-            <p>
-              <small>{user.createdOn}</small>
-            </p>
-            <Input type="text" value={value} placeholder="Enter your story" onChange={handleChange} />
-            <Button onClick={e => handleSubmit(e, value, user.uid)} className={classes.margin}>
-              {/* Q: alternatives to inline func? Perf issues? */}
-              Save
-            </Button>
-          </CardBody>
-        </Card>
-      </Col>
-    </Row>
+    <div>
+      <Row>
+        <Col xs="12" sm="6">
+          <Card>
+            <CardBody>
+              <ProfileHeadlineInput
+                headline={headline}
+                headlineValue={headlineValue}
+                handleHeadlineChange={handleHeadlineChange}
+                handleHeadlineSubmit={handleHeadlineSubmit}
+                uid={uid}
+              />
+            </CardBody>
+            <FileInput
+              imageName={imageName}
+              placeholder="Click to upload image..."
+              name="profileImage"
+              accept=".png,.gif,.jpg"
+              handleImageSubmit={handleImageSubmit}
+              uid={uid}
+            />
+            {!profileUrl && <LoadingDots />}
+            {profileUrl && (
+              <CardImg
+                src={profileUrl}
+                alt={`headshot for ${displayName}`}
+                className="profile-image"
+                data-img-name={imageName}
+              />
+            )}
+            <CardBody>
+              <CardSubtitle>Name</CardSubtitle>
+              <CardText>{displayName}</CardText>
+              <ProfileAboutInput
+                about={about}
+                value={value}
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                uid={uid}
+              />
+              <CardSubtitle>Contact</CardSubtitle>
+              <CardText>{email}</CardText>
+              <SocialMediaEditModal
+                uid={uid}
+                handleSocialMediaUrlSubmit={handleSocialMediaUrlSubmit}
+                socialInputs={socialInputs}
+                handleSocialUrlChange={handleSocialUrlChange}
+              />
+              <SocialMediaIcons socialUrls={socialUrls} />
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
+    </div>
   );
 };
 
-export default injectSheet(styles)(CurrentUser);
+export default CurrentUser;
